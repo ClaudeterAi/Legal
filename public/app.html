@@ -31,314 +31,211 @@
     z-index:100;
   }
   .logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
-  .logo svg { width:20px; height:20px; }
   .logo-text { font-family:'Cormorant Garamond',serif; font-size:20px; color:#fff; font-weight:600; letter-spacing:.3px; }
-
-  .mode-toggle {
-    display:flex; background:rgba(255,255,255,.1); border-radius:20px; padding:3px; margin-left:4px;
-  }
-  .mode-btn {
-    padding:4px 14px; border-radius:16px; border:none; cursor:pointer;
-    font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500;
-    transition:all .2s; color:rgba(255,255,255,.6); background:transparent;
-  }
+  .mode-toggle { display:flex; background:rgba(255,255,255,.1); border-radius:20px; padding:3px; margin-left:4px; }
+  .mode-btn { padding:4px 14px; border-radius:16px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; transition:all .2s; color:rgba(255,255,255,.6); background:transparent; }
   .mode-btn.active { background:#fff; color:var(--navy); }
-
   .topbar-selects { display:flex; gap:8px; margin-left:auto; align-items:center; }
-  .top-select {
-    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
-    color:#fff; padding:5px 10px; border-radius:6px; font-size:12px;
-    font-family:'DM Sans',sans-serif; cursor:pointer; outline:none;
-    appearance:none; -webkit-appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,.5)'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:right 8px center;
-    padding-right:24px;
-  }
+  .top-select { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); color:#fff; padding:5px 10px; border-radius:6px; font-size:12px; cursor:pointer; }
   .top-select option { background:var(--navy); }
-
-  .search-law-btn {
-    background:rgba(184,149,42,.2); border:1px solid rgba(184,149,42,.4);
-    color:var(--gold2); padding:5px 12px; border-radius:6px; font-size:12px;
-    font-family:'DM Sans',sans-serif; cursor:pointer; font-weight:500;
-    transition:all .2s; white-space:nowrap;
-  }
-  .search-law-btn:hover { background:rgba(184,149,42,.3); }
+  .icon-btn { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); color:#fff; padding:5px 10px; border-radius:6px; font-size:12px; cursor:pointer; transition:background .2s; white-space:nowrap; }
+  .icon-btn:hover { background:rgba(255,255,255,.2); }
 
   /* LAYOUT */
   .app-body { display:flex; flex:1; overflow:hidden; }
 
   /* SIDEBAR */
-  .sidebar {
-    width:var(--sidebar); background:var(--navy2); display:flex; flex-direction:column;
-    border-right:1px solid rgba(255,255,255,.06); flex-shrink:0; overflow:hidden;
-  }
-  .new-chat-btn {
-    margin:12px; padding:9px 14px; background:rgba(184,149,42,.15);
-    border:1px solid rgba(184,149,42,.3); border-radius:6px; color:var(--gold2);
-    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
-    cursor:pointer; display:flex; align-items:center; gap:8px; transition:all .2s;
-  }
-  .new-chat-btn:hover { background:rgba(184,149,42,.25); }
+  .sidebar { width:var(--sidebar); background:var(--navy2); display:flex; flex-direction:column; flex-shrink:0; border-right:1px solid rgba(255,255,255,.08); }
+  .sidebar-top { padding:12px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .new-chat-btn { width:100%; background:var(--gold); color:#fff; border:none; padding:8px 12px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; font-family:'DM Sans',sans-serif; }
+  .new-chat-btn:hover { background:var(--gold2); }
+  .sidebar-tools { padding:10px 12px 6px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; gap:6px; }
+  .tool-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.8); padding:5px 9px; border-radius:6px; font-size:11px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .2s; }
+  .tool-btn:hover { background:rgba(255,255,255,.16); color:#fff; }
+  .sidebar-section { padding:8px 12px 4px; font-size:10px; font-weight:600; color:rgba(255,255,255,.3); letter-spacing:.8px; text-transform:uppercase; }
+  .sidebar-chats { flex:1; overflow-y:auto; padding:0 8px 12px; }
+  .chat-item { padding:8px 10px; border-radius:8px; cursor:pointer; margin-bottom:2px; transition:background .15s; }
+  .chat-item:hover { background:rgba(255,255,255,.08); }
+  .chat-item.active { background:rgba(184,149,42,.2); }
+  .chat-title { font-size:12px; color:rgba(255,255,255,.8); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .chat-time { font-size:10px; color:rgba(255,255,255,.3); margin-top:2px; }
 
-  .sidebar-section { padding:8px 12px 4px; font-size:10px; color:rgba(255,255,255,.3); font-weight:600; letter-spacing:.8px; text-transform:uppercase; }
+  /* MAIN */
+  .main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+  .context-bar { background:#fff; border-bottom:1px solid var(--border); padding:8px 16px; display:flex; align-items:center; gap:8px; flex-shrink:0; flex-wrap:wrap; }
+  .context-pill { background:var(--cream2); border:1px solid var(--border); padding:3px 10px; border-radius:12px; font-size:11px; color:var(--muted); }
+  .context-pill.active { background:var(--navy); color:#fff; border-color:var(--navy); }
 
-  .chat-item {
-    margin:1px 8px; padding:8px 10px; border-radius:5px; cursor:pointer;
-    color:rgba(255,255,255,.65); font-size:12.5px; transition:all .15s;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    display:flex; align-items:center; gap:8px;
-  }
-  .chat-item:hover { background:rgba(255,255,255,.07); color:#fff; }
-  .chat-item.active { background:rgba(255,255,255,.1); color:#fff; }
-  .chat-item-icon { font-size:11px; flex-shrink:0; opacity:.6; }
+  /* MESSAGES */
+  .messages { flex:1; overflow-y:auto; padding:20px 24px; display:flex; flex-direction:column; gap:16px; }
+  .welcome { text-align:center; padding:40px 20px; max-width:600px; margin:0 auto; }
+  .welcome h2 { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--navy); margin-bottom:8px; }
+  .welcome p { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .welcome-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .chip { background:#fff; border:1px solid var(--border); padding:7px 14px; border-radius:20px; font-size:12px; cursor:pointer; transition:all .2s; }
+  .chip:hover { border-color:var(--navy); color:var(--navy); background:var(--cream2); }
 
-  .sidebar-divider { height:1px; background:rgba(255,255,255,.06); margin:10px 12px; }
+  /* CALC CHIPS - for calculators in welcome */
+  .calc-chip { background:var(--cream2); border:1px solid var(--gold); color:var(--navy); padding:6px 12px; border-radius:16px; font-size:11.5px; cursor:pointer; transition:all .2s; font-weight:500; }
+  .calc-chip:hover { background:var(--gold); color:#fff; }
 
-  .sidebar-tools { padding:8px; }
-  .tool-btn {
-    width:100%; padding:8px 10px; border-radius:5px; border:none;
-    background:transparent; color:rgba(255,255,255,.55); font-family:'DM Sans',sans-serif;
-    font-size:12.5px; cursor:pointer; display:flex; align-items:center; gap:9px;
-    transition:all .15s; text-align:left;
-  }
-  .tool-btn:hover { background:rgba(255,255,255,.07); color:#fff; }
-  .tool-btn.active-tool { background:rgba(184,149,42,.15); color:var(--gold2); }
-
-  /* MAIN CHAT */
-  .chat-main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
-
-  /* Context bar */
-  .context-bar {
-    padding:8px 20px; background:var(--cream2); border-bottom:1px solid var(--border);
-    display:flex; align-items:center; gap:10px; font-size:12px; color:var(--muted);
-    flex-wrap:wrap;
-  }
-  .context-pill {
-    display:flex; align-items:center; gap:5px; background:#fff; border:1px solid var(--border);
-    padding:4px 10px; border-radius:20px; font-size:11.5px; cursor:pointer;
-    transition:all .15s; color:var(--text);
-  }
-  .context-pill:hover { border-color:var(--gold); color:var(--gold); }
-  .context-pill.set { border-color:var(--navy); color:var(--navy); background:rgba(15,31,61,.04); }
-
-  /* Messages */
-  .messages {
-    flex:1; overflow-y:auto; padding:24px 20px; display:flex; flex-direction:column; gap:20px;
-  }
-  .messages::-webkit-scrollbar { width:4px; }
-  .messages::-webkit-scrollbar-track { background:transparent; }
-  .messages::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
-
-  /* Welcome */
-  .welcome {
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    flex:1; text-align:center; padding:40px 20px;
-  }
-  .welcome-icon { font-size:40px; margin-bottom:16px; }
-  .welcome h1 { font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--navy); margin-bottom:8px; }
-  .welcome p { color:var(--muted); font-size:14px; max-width:420px; line-height:1.6; }
-  .welcome-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:24px; max-width:560px; }
-  .chip {
-    padding:8px 16px; border:1px solid var(--border); border-radius:20px;
-    font-size:12.5px; cursor:pointer; transition:all .18s; background:#fff;
-    color:var(--text); text-align:left;
-  }
-  .chip:hover { border-color:var(--gold); color:var(--gold); background:rgba(184,149,42,.04); }
-
-  /* Message bubbles */
-  .msg { display:flex; gap:12px; max-width:820px; }
-  .msg.user { flex-direction:row-reverse; align-self:flex-end; }
-  .msg-avatar {
-    width:32px; height:32px; border-radius:50%; flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; font-size:13px; margin-top:2px;
-  }
-  .msg.ai .msg-avatar { background:var(--navy); color:var(--gold); font-family:'Cormorant Garamond',serif; font-weight:600; font-size:14px; }
-  .msg.user .msg-avatar { background:var(--gold); color:#fff; font-size:12px; }
-  .msg-content { flex:1; }
-  .msg-bubble {
-    padding:12px 16px; border-radius:12px; font-size:14px; line-height:1.7;
-  }
-  .msg.ai .msg-bubble { background:#fff; border:1px solid var(--border); border-top-left-radius:4px; }
-  .msg.user .msg-bubble { background:var(--navy); color:#fff; border-top-right-radius:4px; }
-  .msg-meta { font-size:11px; color:var(--muted); margin-top:5px; display:flex; gap:10px; align-items:center; }
-  .msg.user .msg-meta { justify-content:flex-end; }
-
-  /* Citation tags */
-  .citation {
-    display:inline-flex; align-items:center; gap:4px; background:rgba(15,31,61,.06);
-    border:1px solid rgba(15,31,61,.15); padding:2px 8px; border-radius:10px;
-    font-size:11px; color:var(--navy); font-weight:500; margin:2px; cursor:pointer;
-  }
-  .citation:hover { background:rgba(15,31,61,.1); }
-
-  /* Source cards */
-  .sources { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
-  .source-card {
-    padding:8px 12px; border:1px solid var(--border); border-radius:8px; background:#fff;
-    font-size:11.5px; max-width:200px; cursor:pointer; transition:all .15s;
-  }
-  .source-card:hover { border-color:var(--gold); }
-  .source-card .source-title { font-weight:600; color:var(--navy); margin-bottom:2px; }
-  .source-card .source-sub { color:var(--muted); font-size:10.5px; }
-
-  /* Typing indicator */
-  .typing { display:flex; gap:4px; align-items:center; padding:4px 0; }
-  .typing span {
-    width:7px; height:7px; border-radius:50%; background:var(--muted);
-    animation:bounce .8s infinite;
-  }
+  .msg { display:flex; gap:10px; max-width:100%; }
+  .msg.user { flex-direction:row-reverse; }
+  .msg-avatar { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+  .msg.ai .msg-avatar { background:var(--navy); color:#fff; }
+  .msg.user .msg-avatar { background:var(--gold); color:#fff; font-size:14px; }
+  .msg-content { max-width:78%; }
+  .msg-bubble { padding:12px 16px; border-radius:12px; font-size:13.5px; line-height:1.65; }
+  .msg.ai .msg-bubble { background:#fff; border:1px solid var(--border); border-radius:4px 12px 12px 12px; }
+  .msg.user .msg-bubble { background:var(--navy); color:#fff; border-radius:12px 4px 12px 12px; }
+  .msg-meta { font-size:10px; color:var(--muted); margin-top:4px; }
+  .msg.user .msg-meta { text-align:right; }
+  .msg-bubble strong { color:var(--navy); }
+  .msg.user .msg-bubble strong { color:#D4AF50; }
+  .msg-bubble ul { padding-left:20px; margin:6px 0; }
+  .msg-bubble li { margin-bottom:3px; }
+  .msg-bubble .section-heading { display:block; font-weight:700; color:var(--navy); margin:10px 0 4px; font-size:14px; border-bottom:1px solid var(--border); padding-bottom:4px; }
+  .msg-bubble .warning-box { background:#FFF3CD; border:1px solid #F0AD4E; border-radius:6px; padding:8px 12px; margin-top:8px; font-size:12px; color:#856404; }
+  .msg-bubble .info-box { background:#E8F4FD; border:1px solid #7DB8D8; border-radius:6px; padding:8px 12px; margin-top:8px; font-size:12px; color:#1A5276; }
+  .msg-bubble .case-list { background:var(--cream2); border:1px solid var(--border); border-radius:8px; padding:12px; margin:8px 0; }
+  .msg-bubble .case-item { padding:8px 0; border-bottom:1px solid var(--border); cursor:pointer; }
+  .msg-bubble .case-item:last-child { border-bottom:none; }
+  .msg-bubble .case-num { font-weight:700; color:var(--gold); }
+  .typing span { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--muted); margin:0 2px; animation:bounce .8s infinite; }
   .typing span:nth-child(2) { animation-delay:.15s; }
   .typing span:nth-child(3) { animation-delay:.3s; }
   @keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+  .cursor { display:inline-block; width:2px; height:14px; background:var(--navy); margin-left:2px; animation:blink .7s infinite; vertical-align:middle; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-  /* INPUT AREA */
-  .input-area {
-    padding:12px 20px 16px; border-top:1px solid var(--border); background:var(--cream);
-  }
-  .input-actions { display:flex; gap:8px; margin-bottom:10px; }
-  .action-btn {
-    padding:6px 12px; border:1px solid var(--border); border-radius:20px; background:#fff;
-    font-size:12px; cursor:pointer; display:flex; align-items:center; gap:6px;
-    transition:all .15s; color:var(--text); font-family:'DM Sans',sans-serif;
-  }
-  .action-btn:hover { border-color:var(--navy); color:var(--navy); }
-  .action-btn.highlight { border-color:var(--gold); color:var(--gold); background:rgba(184,149,42,.04); }
-
-  .input-box {
-    display:flex; gap:10px; align-items:flex-end;
-    background:#fff; border:1.5px solid var(--border); border-radius:12px;
-    padding:10px 12px; transition:border-color .2s;
-  }
-  .input-box:focus-within { border-color:var(--navy); }
-  .input-box textarea {
-    flex:1; border:none; outline:none; resize:none; font-family:'DM Sans',sans-serif;
-    font-size:14px; color:var(--text); background:transparent; max-height:160px;
-    min-height:24px; line-height:1.5;
-  }
-  .input-box textarea::placeholder { color:var(--muted); }
-  .send-btn {
-    width:36px; height:36px; border-radius:8px; background:var(--navy); border:none;
-    cursor:pointer; display:flex; align-items:center; justify-content:center;
-    transition:all .2s; flex-shrink:0;
-  }
-  .send-btn:hover { background:var(--navy2); transform:scale(1.05); }
-  .send-btn:disabled { opacity:.4; cursor:not-allowed; transform:none; }
-  .send-btn svg { width:16px; height:16px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  /* INPUT */
+  .input-area { background:#fff; border-top:1px solid var(--border); padding:12px 16px; flex-shrink:0; }
+  .input-row { display:flex; align-items:flex-end; gap:10px; background:var(--cream2); border:1.5px solid var(--border); border-radius:12px; padding:8px 12px; transition:border-color .2s; }
+  .input-row:focus-within { border-color:var(--navy); }
+  .chat-input { flex:1; border:none; background:transparent; font-family:'DM Sans',sans-serif; font-size:14px; resize:none; outline:none; max-height:160px; min-height:24px; line-height:1.5; }
+  .input-actions { display:flex; gap:6px; align-items:center; }
+  .attach-btn { background:none; border:none; cursor:pointer; color:var(--muted); font-size:16px; padding:2px; transition:color .2s; }
+  .attach-btn:hover { color:var(--navy); }
+  .send-btn { background:var(--navy); color:#fff; border:none; width:34px; height:34px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:background .2s; flex-shrink:0; }
+  .send-btn:hover { background:var(--navy2); }
+  .send-btn:disabled { background:var(--border); cursor:not-allowed; }
+  .input-hint { font-size:10.5px; color:var(--muted); text-align:center; margin-top:6px; }
 
   /* PANELS */
-  .panel-overlay {
-    position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:200;
-    display:none; align-items:flex-start; justify-content:flex-end;
-  }
-  .panel-overlay.open { display:flex; }
-  .panel {
-    width:460px; height:100%; background:var(--cream); overflow-y:auto;
-    box-shadow:-4px 0 24px rgba(0,0,0,.15); animation:slideIn .25s ease;
-    display:flex; flex-direction:column;
-  }
-  @keyframes slideIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
-  .panel-header {
-    padding:20px 24px; border-bottom:1px solid var(--border); display:flex;
-    align-items:center; justify-content:space-between; background:#fff; flex-shrink:0;
-  }
-  .panel-header h2 { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--navy); }
-  .panel-close { background:none; border:none; cursor:pointer; color:var(--muted); font-size:20px; }
-  .panel-body { padding:20px 24px; flex:1; }
+  .panel-overlay { position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:200; display:flex; justify-content:flex-end; opacity:0; pointer-events:none; transition:opacity .25s; }
+  .panel-overlay.open { opacity:1; pointer-events:all; }
+  .panel { width:420px; height:100%; background:#fff; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s; overflow:hidden; }
+  .panel-overlay.open .panel { transform:translateX(0); }
+  .panel-header { background:var(--navy); padding:16px 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+  .panel-title { font-family:'Cormorant Garamond',serif; font-size:20px; color:#fff; font-weight:600; }
+  .panel-close { background:none; border:none; color:rgba(255,255,255,.6); font-size:20px; cursor:pointer; }
+  .panel-close:hover { color:#fff; }
+  .panel-body { flex:1; overflow-y:auto; padding:16px; }
 
-  /* Search panel */
-  .search-input-wrap {
-    display:flex; gap:8px; margin-bottom:16px;
-  }
-  .search-input {
-    flex:1; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px;
-    font-family:'DM Sans',sans-serif; font-size:14px; outline:none;
-    transition:border-color .2s;
-  }
+  /* SEARCH PANEL */
+  .search-input-wrap { display:flex; gap:8px; margin-bottom:16px; }
+  .search-input { flex:1; border:1.5px solid var(--border); border-radius:8px; padding:9px 12px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; }
   .search-input:focus { border-color:var(--navy); }
-  .search-btn-main {
-    padding:10px 18px; background:var(--navy); color:#fff; border:none; border-radius:8px;
-    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer;
-  }
-  .result-item {
-    padding:12px 14px; border:1px solid var(--border); border-radius:8px; margin-bottom:8px;
-    background:#fff; cursor:pointer; transition:all .15s;
-  }
-  .result-item:hover { border-color:var(--navy); }
-  .result-item h4 { font-size:13.5px; font-weight:600; color:var(--navy); margin-bottom:4px; }
-  .result-item p { font-size:12px; color:var(--muted); line-height:1.5; }
-  .result-tag { display:inline-block; font-size:10.5px; background:rgba(15,31,61,.07); color:var(--navy); padding:2px 8px; border-radius:10px; margin-top:6px; }
+  .search-btn { background:var(--navy); color:#fff; border:none; padding:9px 16px; border-radius:8px; font-size:13px; cursor:pointer; font-family:'DM Sans',sans-serif; }
 
-  /* Updates panel */
-  .update-item {
-    padding:14px 0; border-bottom:1px solid var(--border);
-  }
-  .update-date { font-size:11px; color:var(--muted); margin-bottom:4px; }
-  .update-title { font-size:13.5px; font-weight:600; color:var(--navy); margin-bottom:4px; cursor:pointer; }
+  /* CALCULATOR PANEL */
+  .calc-tabs { display:flex; gap:4px; margin-bottom:16px; flex-wrap:wrap; }
+  .calc-tab { padding:6px 12px; border-radius:20px; font-size:12px; cursor:pointer; border:1px solid var(--border); background:var(--cream2); color:var(--muted); transition:all .2s; font-family:'DM Sans',sans-serif; }
+  .calc-tab.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .calc-form { display:flex; flex-direction:column; gap:12px; }
+  .calc-field { display:flex; flex-direction:column; gap:4px; }
+  .calc-field label { font-size:12px; font-weight:600; color:var(--navy); }
+  .calc-field input, .calc-field select { border:1.5px solid var(--border); border-radius:8px; padding:8px 12px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; }
+  .calc-field input:focus, .calc-field select:focus { border-color:var(--navy); }
+  .calc-btn { background:var(--navy); color:#fff; border:none; padding:10px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:4px; }
+  .calc-result { background:var(--cream2); border:1px solid var(--border); border-radius:8px; padding:14px; margin-top:12px; }
+  .calc-result h4 { color:var(--navy); font-size:14px; margin-bottom:8px; }
+  .calc-result .result-val { font-size:22px; font-weight:700; color:var(--gold); }
+  .calc-result p { font-size:12px; color:var(--muted); margin-top:4px; }
+
+  /* CHECKLIST / TOOL PANELS */
+  .checklist-section { margin-bottom:16px; }
+  .checklist-section h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border); }
+  .checklist-item { display:flex; align-items:flex-start; gap:8px; padding:6px 0; border-bottom:1px solid var(--cream2); }
+  .checklist-item input[type=checkbox] { margin-top:2px; accent-color:var(--navy); flex-shrink:0; }
+  .checklist-item label { font-size:12px; color:var(--text); cursor:pointer; }
+
+  /* UPDATES */
+  .update-item { padding:12px 0; border-bottom:1px solid var(--border); }
+  .update-date { font-size:10px; color:var(--muted); margin-bottom:2px; }
+  .update-title { font-size:13px; font-weight:600; color:var(--navy); cursor:pointer; margin-bottom:4px; }
   .update-title:hover { color:var(--gold); }
-  .update-summary { font-size:12.5px; color:var(--text); line-height:1.5; }
-  .update-badge { display:inline-block; font-size:10px; padding:2px 8px; border-radius:10px; margin-top:6px; font-weight:600; }
-  .badge-new { background:rgba(39,174,96,.12); color:var(--green); }
-  .badge-amendment { background:rgba(184,149,42,.12); color:var(--gold); }
-  .badge-judgement { background:rgba(15,31,61,.08); color:var(--navy); }
+  .update-summary { font-size:12px; color:var(--text); line-height:1.5; }
+  .update-badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600; margin-top:6px; }
+  .badge-amendment { background:#FFF3CD; color:#856404; }
+  .badge-judgement { background:#D1ECF1; color:#0C5460; }
+  .badge-new { background:#D4EDDA; color:#155724; }
 
-  /* Draft panel */
-  .draft-template {
-    padding:12px 14px; border:1px solid var(--border); border-radius:8px; margin-bottom:8px;
-    background:#fff; cursor:pointer; transition:all .15s; display:flex; align-items:center; gap:12px;
-  }
-  .draft-template:hover { border-color:var(--gold); }
-  .draft-icon { width:36px; height:36px; border-radius:8px; background:rgba(15,31,61,.06); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
-  .draft-info h4 { font-size:13px; font-weight:600; color:var(--navy); }
-  .draft-info p { font-size:11.5px; color:var(--muted); margin-top:2px; }
+  /* COURTS */
+  .court-item { padding:12px; border:1px solid var(--border); border-radius:8px; margin-bottom:10px; cursor:pointer; transition:border-color .2s; }
+  .court-item:hover { border-color:var(--navy); }
+  .court-item h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .court-item p { font-size:12px; color:var(--muted); line-height:1.5; }
 
-  /* Courts panel */
-  .court-item {
-    padding:12px 14px; border:1px solid var(--border); border-radius:8px; margin-bottom:8px;
-    background:#fff; cursor:pointer; transition:all .15s;
-  }
-  .court-item:hover { border-color:var(--navy); background:rgba(15,31,61,.02); }
-  .court-item h4 { font-size:13px; font-weight:600; color:var(--navy); }
-  .court-item p { font-size:11.5px; color:var(--muted); margin-top:3px; }
+  /* DRAFTS */
+  .draft-template { display:flex; gap:12px; align-items:center; padding:12px; border:1px solid var(--border); border-radius:8px; margin-bottom:8px; cursor:pointer; transition:border-color .2s; }
+  .draft-template:hover { border-color:var(--navy); background:var(--cream2); }
+  .draft-icon { font-size:24px; flex-shrink:0; }
+  .draft-info h4 { font-size:13px; font-weight:600; color:var(--navy); margin-bottom:2px; }
+  .draft-info p { font-size:12px; color:var(--muted); }
 
-  /* Letterhead upload */
-  .upload-zone {
-    border:2px dashed var(--border); border-radius:10px; padding:32px;
-    text-align:center; cursor:pointer; transition:all .2s;
-  }
-  .upload-zone:hover { border-color:var(--gold); background:rgba(184,149,42,.03); }
-  .upload-zone p { font-size:13px; color:var(--muted); margin-top:8px; }
+  /* CASE TRACKER */
+  .case-tracker-add { display:flex; gap:8px; margin-bottom:16px; }
+  .case-tracker-add input { flex:1; border:1.5px solid var(--border); border-radius:8px; padding:8px 12px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; }
+  .case-tracker-add input:focus { border-color:var(--navy); }
+  .case-item-card { background:var(--cream2); border:1px solid var(--border); border-radius:8px; padding:12px; margin-bottom:10px; }
+  .case-item-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+  .case-item-name { font-size:13px; font-weight:700; color:var(--navy); }
+  .case-item-delete { background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px; }
+  .case-item-delete:hover { color:var(--red); }
+  .case-badges { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .case-badge { padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600; background:#E8EAF0; color:var(--navy); }
+  .case-badge.green { background:#D4EDDA; color:#155724; }
+  .case-badge.orange { background:#FFF3CD; color:#856404; }
+  .case-badge.red { background:#F8D7DA; color:#721C24; }
+  .case-next-date { font-size:12px; color:var(--muted); margin-top:6px; }
+  .case-next-date span { color:var(--navy); font-weight:600; }
 
-  /* Tabs */
-  .tabs { display:flex; border-bottom:1.5px solid var(--border); margin-bottom:16px; }
-  .tab {
-    padding:8px 16px; border:none; background:none; cursor:pointer;
-    font-family:'DM Sans',sans-serif; font-size:13px; color:var(--muted);
-    border-bottom:2px solid transparent; margin-bottom:-1.5px; transition:all .15s;
-  }
+  /* LETTERHEAD */
+  #letterheadPreview { display:none; }
+  #letterheadImg { max-width:100%; border-radius:6px; border:1px solid var(--border); }
+
+  /* COMPLIANCE CALENDAR */
+  .compliance-month { margin-bottom:16px; }
+  .compliance-month h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+  .compliance-deadline { display:flex; gap:10px; padding:6px 0; border-bottom:1px solid var(--cream2); align-items:flex-start; }
+  .deadline-date { font-size:11px; font-weight:700; color:var(--gold); min-width:60px; flex-shrink:0; }
+  .deadline-text { font-size:12px; color:var(--text); flex:1; }
+  .deadline-tag { font-size:10px; padding:1px 6px; border-radius:8px; background:var(--cream2); color:var(--muted); border:1px solid var(--border); flex-shrink:0; }
+
+  /* RTI WIZARD */
+  .rti-step { margin-bottom:14px; }
+  .rti-step label { display:block; font-size:12px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .rti-step input, .rti-step textarea, .rti-step select { width:100%; border:1.5px solid var(--border); border-radius:8px; padding:8px 12px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; }
+  .rti-step textarea { min-height:70px; resize:vertical; }
+  .rti-step input:focus, .rti-step textarea:focus, .rti-step select:focus { border-color:var(--navy); }
+
+  /* ECOURTS */
+  .cnr-lookup { display:flex; gap:8px; margin-bottom:12px; }
+  .cnr-lookup input { flex:1; border:1.5px solid var(--border); border-radius:8px; padding:8px 12px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; }
+  .cnr-lookup input:focus { border-color:var(--navy); }
+  .cnr-result { background:var(--cream2); border:1px solid var(--border); border-radius:8px; padding:12px; margin-top:8px; font-size:13px; }
+
+  /* TABS */
+  .tabs { display:flex; gap:4px; padding:0 16px 0; margin-bottom:12px; }
+  .tab { padding:7px 14px; font-size:12px; cursor:pointer; border-bottom:2px solid transparent; color:var(--muted); font-family:'DM Sans',sans-serif; background:none; border-top:none; border-left:none; border-right:none; }
   .tab.active { color:var(--navy); border-bottom-color:var(--navy); font-weight:600; }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
 
-  /* Responsive */
-  @media(max-width:768px) {
-    .sidebar { display:none; }
-    .topbar-selects { gap:4px; }
-    .top-select { font-size:11px; padding:4px 8px; }
-  }
-
-  /* Markdown-like formatting in messages */
-  .msg-bubble strong { font-weight:600; }
-  .msg-bubble em { font-style:italic; }
-  .msg-bubble .section-heading { font-weight:700; color:var(--navy); margin:12px 0 6px; display:block; }
-  .msg-bubble .legal-ref { font-weight:600; color:var(--navy); }
-  .msg-bubble ul { padding-left:18px; margin:6px 0; }
-  .msg-bubble li { margin-bottom:4px; }
-  .msg-bubble .warning-box {
-    background:rgba(192,57,43,.06); border-left:3px solid var(--red);
-    padding:8px 12px; border-radius:0 6px 6px 0; margin:10px 0; font-size:13px;
-  }
-  .msg-bubble .info-box {
-    background:rgba(15,31,61,.05); border-left:3px solid var(--navy);
-    padding:8px 12px; border-radius:0 6px 6px 0; margin:10px 0; font-size:13px;
-  }
+  .empty-state { text-align:center; padding:40px 20px; color:var(--muted); }
+  .empty-state .icon { font-size:36px; margin-bottom:10px; }
+  .empty-state p { font-size:13px; }
 </style>
 </head>
 <body>
@@ -346,17 +243,12 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <a class="logo" href="#">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#B8952A" stroke-width="1.5">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-    </svg>
-    <span class="logo-text">LexAI</span>
+    <span class="logo-text">⚖️ LexAI</span>
   </a>
-
   <div class="mode-toggle">
     <button class="mode-btn active" id="lawyerBtn" onclick="setMode('lawyer')">⚖️ Lawyer</button>
     <button class="mode-btn" id="citizenBtn" onclick="setMode('citizen')">👤 Citizen</button>
   </div>
-
   <div class="topbar-selects">
     <select class="top-select" id="countrySelect" onchange="updateContext()">
       <option value="india">🇮🇳 India</option>
@@ -371,22 +263,22 @@
       <option value="high">High Court</option>
       <option value="district">District Court</option>
       <option value="consumer">Consumer Forum</option>
-      <option value="tribunal">Tribunal</option>
+      <option value="tribunal">Tribunal / NCLT</option>
     </select>
     <select class="top-select" id="specSelect" onchange="updateContext()">
       <option value="">All Areas</option>
-      <option value="criminal">Criminal</option>
-      <option value="civil">Civil</option>
-      <option value="family">Family</option>
-      <option value="corporate">Corporate</option>
-      <option value="tax">Tax</option>
-      <option value="ip">IP & Patents</option>
-      <option value="immigration">Immigration</option>
-      <option value="realestate">Real Estate</option>
-      <option value="constitutional">Constitutional</option>
-      <option value="labour">Labour</option>
+      <option value="criminal">⚖️ Criminal</option>
+      <option value="civil">📋 Civil</option>
+      <option value="family">👨‍👩‍👧 Family</option>
+      <option value="corporate">💼 Corporate</option>
+      <option value="tax">💰 Tax</option>
+      <option value="ip">💡 IP & Patents</option>
+      <option value="immigration">✈️ Immigration</option>
+      <option value="realestate">🏠 Real Estate</option>
+      <option value="constitutional">🏛️ Constitutional</option>
+      <option value="labour">👷 Labour</option>
     </select>
-    <button class="search-law-btn" onclick="openPanel('search')">🔍 Search Law</button>
+    <button class="icon-btn" onclick="openPanel('letterhead')">🖨️ Firm</button>
   </div>
 </div>
 
@@ -395,190 +287,456 @@
 
   <!-- SIDEBAR -->
   <div class="sidebar">
-    <button class="new-chat-btn" onclick="newChat()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      New Chat
-    </button>
-
-    <div id="chatHistory"></div>
-
-    <div class="sidebar-divider"></div>
+    <div class="sidebar-top">
+      <button class="new-chat-btn" onclick="newChat()">✏️ New Chat</button>
+    </div>
     <div class="sidebar-tools">
       <button class="tool-btn" onclick="openPanel('search')">🔍 Search Law</button>
-      <button class="tool-btn" onclick="openPanel('updates')">📰 Law Updates</button>
-      <button class="tool-btn" onclick="openPanel('courts')">🏛️ Courts Guide</button>
-      <button class="tool-btn" onclick="openPanel('draft')">✍️ Draft Templates</button>
-      <button class="tool-btn" onclick="openPanel('letterhead')" id="letterheadBtn">🖨️ My Letterhead</button>
+      <button class="tool-btn" onclick="openPanel('calc')">🧮 Calculators</button>
+      <button class="tool-btn" onclick="openPanel('draft')">✍️ Draft</button>
+      <button class="tool-btn" onclick="openPanel('tracker')">📁 Cases</button>
+      <button class="tool-btn" onclick="openPanel('updates')">📰 Updates</button>
+      <button class="tool-btn" onclick="openPanel('courts')">🏛️ Courts</button>
+      <button class="tool-btn" onclick="openPanel('compliance')">📅 Deadlines</button>
+      <button class="tool-btn" onclick="openPanel('rti')">📮 RTI</button>
+      <button class="tool-btn" onclick="openPanel('ecourts')">⚡ eCourts</button>
+      <button class="tool-btn" onclick="openPanel('checklist')">✅ Checklists</button>
     </div>
+    <div class="sidebar-section">Conversations</div>
+    <div class="sidebar-chats" id="sidebarChats"></div>
   </div>
 
   <!-- MAIN CHAT -->
-  <div class="chat-main">
-    <!-- Context bar -->
-    <div class="context-bar" id="contextBar">
-      <span>Answering under:</span>
-      <span class="context-pill set" id="countryPill">🇮🇳 Indian Law</span>
-      <span class="context-pill" id="courtPill" onclick="document.getElementById('courtSelect').focus()">All Courts</span>
-      <span class="context-pill" id="specPill" onclick="document.getElementById('specSelect').focus()">All Areas</span>
-      <span class="context-pill" id="modePill">⚖️ Lawyer Mode</span>
+  <div class="main">
+    <div class="context-bar">
+      <span class="context-pill active" id="modePill">⚖️ Lawyer Mode</span>
+      <span class="context-pill" id="countryPill">🇮🇳 Indian Law</span>
+      <span class="context-pill" id="courtPill">All Courts</span>
+      <span class="context-pill" id="specPill">All Areas</span>
     </div>
 
-    <!-- Messages -->
     <div class="messages" id="messages">
       <div class="welcome" id="welcome">
-        <div class="welcome-icon">⚖️</div>
-        <h1>Your Legal Intelligence</h1>
-        <p>Ask any legal question. I'll cite the exact acts, sections, and recent judgements — for your jurisdiction.</p>
-        <div class="welcome-chips">
-          <div class="chip" onclick="sendChip(this)">📄 Draft a rental agreement</div>
-          <div class="chip" onclick="sendChip(this)">⚡ What is IPC Section 420?</div>
-          <div class="chip" onclick="sendChip(this)">🏠 Tenant rights in India</div>
-          <div class="chip" onclick="sendChip(this)">💼 How to register a company?</div>
-          <div class="chip" onclick="sendChip(this)">👨‍👩‍👧 Divorce procedure under Hindu law</div>
-          <div class="chip" onclick="sendChip(this)">🔍 Latest Supreme Court judgements</div>
-          <div class="chip" onclick="sendChip(this)">📋 Review my employment contract</div>
-          <div class="chip" onclick="sendChip(this)">💰 GST on legal services</div>
+        <h2>Good day, Counsellor</h2>
+        <p>LexAI — Elite AI Legal Intelligence for India, USA &amp; beyond. Ask anything. I search live case law, cite real sections, and draft in seconds.</p>
+        <div class="welcome-chips" id="welcomeChips">
+          <span class="chip" onclick="sendChip(this)">⚖️ Draft a bail application for Section 420 BNS</span>
+          <span class="chip" onclick="sendChip(this)">🔍 Arnesh Kumar guidelines on arrest</span>
+          <span class="chip" onclick="sendChip(this)">📋 Limitation period for recovery suit</span>
+          <span class="chip" onclick="sendChip(this)">💼 Shareholders agreement ROFR clause</span>
+          <span class="chip" onclick="sendChip(this)">🏠 RERA Section 18 compensation calculation</span>
+          <span class="chip" onclick="sendChip(this)">👨‍👩‍👧 Section 144 BNSS maintenance amount</span>
+        </div>
+        <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+          <span class="calc-chip" onclick="openPanel('calc')">🧮 Maintenance Calculator</span>
+          <span class="calc-chip" onclick="openPanel('calc')">📊 Gratuity Calculator</span>
+          <span class="calc-chip" onclick="openPanel('calc')">🏠 Stamp Duty Estimator</span>
+          <span class="calc-chip" onclick="openPanel('calc')">💰 Capital Gains (54F)</span>
+          <span class="calc-chip" onclick="openPanel('rti')">📮 Generate RTI Application</span>
         </div>
       </div>
     </div>
 
-    <!-- Input actions -->
     <div class="input-area">
-      <div class="input-actions">
-        <button class="action-btn" onclick="openPanel('draft')">✍️ Draft Document</button>
-        <button class="action-btn" id="uploadBtn" onclick="document.getElementById('fileInput').click()">📎 Upload Doc</button>
-        <button class="action-btn highlight" onclick="openPanel('updates')">📰 Law Updates</button>
-        <button class="action-btn" onclick="openPanel('courts')">🏛️ Courts</button>
-        <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt" style="display:none" onchange="handleFileUpload(this)">
+      <div class="input-row">
+        <textarea class="chat-input" id="chatInput" placeholder="Ask any legal question, name a case, or say 'draft a notice'…" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <div class="input-actions">
+          <label class="attach-btn" title="Upload document">
+            📎<input type="file" style="display:none" accept=".pdf,.doc,.docx,.txt,.png,.jpg" onchange="handleFileUpload(this)">
+          </label>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="input-box">
-        <textarea id="chatInput" placeholder="Ask any legal question..." rows="1"
-          onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
-          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>
+      <div class="input-hint">LexAI has live web search · Always verify with your advocate · Not legal advice</div>
     </div>
   </div>
 </div>
 
-<!-- PANELS -->
-<!-- Search Law Panel -->
+<!-- ============================== PANELS ============================== -->
+
+<!-- SEARCH LAW -->
 <div class="panel-overlay" id="panel-search" onclick="closePanelIfOutside(event,'search')">
   <div class="panel">
     <div class="panel-header">
-      <h2>🔍 Search the Law</h2>
+      <span class="panel-title">🔍 Search the Law</span>
       <button class="panel-close" onclick="closePanel('search')">✕</button>
     </div>
     <div class="panel-body">
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab(this,'acts')">Acts & Sections</button>
-        <button class="tab" onclick="switchTab(this,'cases')">Case Law</button>
-        <button class="tab" onclick="switchTab(this,'bare')">Bare Acts</button>
-      </div>
       <div class="search-input-wrap">
-        <input class="search-input" id="lawSearchInput" placeholder="e.g. IPC 420, RERA, divorce procedure..." onkeydown="if(event.key==='Enter')searchLaw()"/>
-        <button class="search-btn-main" onclick="searchLaw()">Search</button>
+        <input class="search-input" id="lawSearchInput" placeholder="e.g. bail conditions, RERA Section 18, IBC Section 9…" onkeydown="if(event.key==='Enter')searchLaw()">
+        <button class="search-btn" onclick="searchLaw()">Search</button>
       </div>
-      <div id="searchResults">
-        <div class="result-item">
-          <h4>IPC Section 420 — Cheating and dishonestly inducing delivery of property</h4>
-          <p>Whoever cheats and thereby dishonestly induces the person deceived to deliver any property... shall be punished with imprisonment up to 7 years.</p>
-          <span class="result-tag">Indian Penal Code</span>
-        </div>
-        <div class="result-item">
-          <h4>Section 138 NI Act — Dishonour of Cheque</h4>
-          <p>Where any cheque drawn by a person for discharge of any debt is returned by the bank unpaid... imprisonment up to 2 years or fine up to twice the cheque amount.</p>
-          <span class="result-tag">Negotiable Instruments Act</span>
-        </div>
-        <div class="result-item">
-          <h4>RERA Section 18 — Return of amount and compensation</h4>
-          <p>If the promoter fails to complete the project by the date specified, the allottee shall be entitled to withdraw from the project.</p>
-          <span class="result-tag">Real Estate Act</span>
-        </div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">AI-powered. Cites real Acts, Sections, and recent judgements. Searches live.</p>
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">Popular Searches</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="chip" onclick="quickSearch('Bail conditions Supreme Court 2024')">Bail SC 2024</span>
+        <span class="chip" onclick="quickSearch('BNS BNSS new sections')">BNS / BNSS</span>
+        <span class="chip" onclick="quickSearch('RERA builder delay compensation')">RERA delay</span>
+        <span class="chip" onclick="quickSearch('Section 138 NI Act cheque bounce')">Cheque bounce</span>
+        <span class="chip" onclick="quickSearch('POCSO Act child protection')">POCSO</span>
+        <span class="chip" onclick="quickSearch('IBC Section 9 operational creditor')">IBC Sec 9</span>
+        <span class="chip" onclick="quickSearch('H-1B visa 2025 cap')">H-1B 2025</span>
+        <span class="chip" onclick="quickSearch('GST input tax credit rules')">GST ITC</span>
+        <span class="chip" onclick="quickSearch('trademark registration India process')">Trademark</span>
+        <span class="chip" onclick="quickSearch('divorce mutual consent Section 13B HMA')">Mutual divorce</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Law Updates Panel -->
-<div class="panel-overlay" id="panel-updates" onclick="closePanelIfOutside(event,'updates')">
+<!-- CALCULATORS -->
+<div class="panel-overlay" id="panel-calc" onclick="closePanelIfOutside(event,'calc')">
   <div class="panel">
     <div class="panel-header">
-      <h2>📰 Law Updates</h2>
-      <button class="panel-close" onclick="closePanel('updates')">✕</button>
+      <span class="panel-title">🧮 Legal Calculators</span>
+      <button class="panel-close" onclick="closePanel('calc')">✕</button>
     </div>
     <div class="panel-body">
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab(this,'judgements')">Judgements</button>
-        <button class="tab" onclick="switchTab(this,'amendments')">Amendments</button>
-        <button class="tab" onclick="switchTab(this,'newlaws')">New Laws</button>
+      <div class="calc-tabs">
+        <button class="calc-tab active" onclick="switchCalc(this,'maintenance')">Maintenance</button>
+        <button class="calc-tab" onclick="switchCalc(this,'gratuity')">Gratuity</button>
+        <button class="calc-tab" onclick="switchCalc(this,'stampduly')">Stamp Duty</button>
+        <button class="calc-tab" onclick="switchCalc(this,'capitalgains')">Capital Gains</button>
+        <button class="calc-tab" onclick="switchCalc(this,'limitation')">Limitation</button>
+        <button class="calc-tab" onclick="switchCalc(this,'courtfee')">Court Fee</button>
       </div>
-      <div id="updatesLoading" style="text-align:center;padding:40px;color:var(--muted)">
-        <div class="typing" style="justify-content:center"><span></span><span></span><span></span></div>
-        <p style="margin-top:12px;font-size:13px">Fetching latest legal updates...</p>
+
+      <!-- MAINTENANCE -->
+      <div id="calc-maintenance" class="tab-panel active">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Under Section 144 BNSS (formerly Section 125 CrPC)</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Husband's Monthly Income (₹)</label><input type="number" id="m_husb" placeholder="e.g. 80000"></div>
+          <div class="calc-field"><label>Wife's Monthly Income (₹)</label><input type="number" id="m_wife" placeholder="0 if no income"></div>
+          <div class="calc-field"><label>Number of Children</label><input type="number" id="m_kids" placeholder="0" min="0"></div>
+          <div class="calc-field"><label>City / Standard of Living</label>
+            <select id="m_city">
+              <option value="metro">Metro (Delhi/Mumbai/Bangalore)</option>
+              <option value="tier2">Tier 2 City</option>
+              <option value="small">Small Town / Rural</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcMaintenance()">Calculate</button>
+        </div>
+        <div class="calc-result" id="res-maintenance" style="display:none"></div>
       </div>
-      <div id="updatesList" style="display:none"></div>
+
+      <!-- GRATUITY -->
+      <div id="calc-gratuity" class="tab-panel">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Payment of Gratuity Act 1972 — Payable after 5 years of service</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Last Drawn Basic Salary (₹/month)</label><input type="number" id="g_salary" placeholder="e.g. 50000"></div>
+          <div class="calc-field"><label>Years of Service</label><input type="number" id="g_years" placeholder="e.g. 7"></div>
+          <div class="calc-field"><label>Additional Months</label><input type="number" id="g_months" placeholder="0" min="0" max="11"></div>
+          <button class="calc-btn" onclick="calcGratuity()">Calculate</button>
+        </div>
+        <div class="calc-result" id="res-gratuity" style="display:none"></div>
+      </div>
+
+      <!-- STAMP DUTY -->
+      <div id="calc-stampduly" class="tab-panel">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Indicative stamp duty + registration charges by state</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Property Value (₹)</label><input type="number" id="sd_value" placeholder="e.g. 5000000"></div>
+          <div class="calc-field"><label>State</label>
+            <select id="sd_state">
+              <option value="delhi">Delhi</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="up">Uttar Pradesh</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="haryana">Haryana</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="tn">Tamil Nadu</option>
+            </select>
+          </div>
+          <div class="calc-field"><label>Buyer Gender</label>
+            <select id="sd_gender">
+              <option value="male">Male</option>
+              <option value="female">Female (lower rates in many states)</option>
+              <option value="joint">Joint (Male + Female)</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcStampDuty()">Calculate</button>
+        </div>
+        <div class="calc-result" id="res-stampduly" style="display:none"></div>
+      </div>
+
+      <!-- CAPITAL GAINS -->
+      <div id="calc-capitalgains" class="tab-panel">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">LTCG on property sale — Section 54/54F exemption</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Sale Consideration (₹)</label><input type="number" id="cg_sale" placeholder="e.g. 8000000"></div>
+          <div class="calc-field"><label>Purchase Cost (₹)</label><input type="number" id="cg_cost" placeholder="e.g. 3000000"></div>
+          <div class="calc-field"><label>Purchase Year</label><input type="number" id="cg_year" placeholder="e.g. 2015" min="2000" max="2024"></div>
+          <div class="calc-field"><label>Sale Year</label><input type="number" id="cg_saleyear" placeholder="e.g. 2024" min="2000" max="2025"></div>
+          <div class="calc-field"><label>Section 54 Reinvestment in new property (₹)</label><input type="number" id="cg_reinvest" placeholder="0 if not reinvesting"></div>
+          <button class="calc-btn" onclick="calcCapitalGains()">Calculate</button>
+        </div>
+        <div class="calc-result" id="res-capitalgains" style="display:none"></div>
+      </div>
+
+      <!-- LIMITATION -->
+      <div id="calc-limitation" class="tab-panel">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Limitation Act 1963 — Period within which you must file suit</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Type of Suit</label>
+            <select id="lim_type">
+              <option value="money_recovery">Recovery of money / loan</option>
+              <option value="cheque_bounce">Cheque bounce (Section 138 NI Act)</option>
+              <option value="property">Property / possession suit</option>
+              <option value="contract">Contract breach</option>
+              <option value="tort">Tort / negligence</option>
+              <option value="service">Service deficiency (consumer)</option>
+              <option value="employment">Employment dispute</option>
+              <option value="appeal_hc">Appeal to High Court</option>
+              <option value="slp">SLP to Supreme Court</option>
+            </select>
+          </div>
+          <div class="calc-field"><label>Date of Cause of Action</label><input type="date" id="lim_date"></div>
+          <button class="calc-btn" onclick="calcLimitation()">Check Deadline</button>
+        </div>
+        <div class="calc-result" id="res-limitation" style="display:none"></div>
+      </div>
+
+      <!-- COURT FEE -->
+      <div id="calc-courtfee" class="tab-panel">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Court Fees Act — ad valorem fee on civil suits</p>
+        <div class="calc-form">
+          <div class="calc-field"><label>Suit Value / Claim Amount (₹)</label><input type="number" id="cf_amount" placeholder="e.g. 500000"></div>
+          <div class="calc-field"><label>Court</label>
+            <select id="cf_court">
+              <option value="district">District Court</option>
+              <option value="high">High Court</option>
+              <option value="consumer_district">Consumer District Forum</option>
+              <option value="consumer_state">Consumer State Commission</option>
+              <option value="consumer_national">Consumer National Commission</option>
+            </select>
+          </div>
+          <div class="calc-field"><label>State</label>
+            <select id="cf_state">
+              <option value="delhi">Delhi</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="up">Uttar Pradesh</option>
+              <option value="other">Other State</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcCourtFee()">Calculate</button>
+        </div>
+        <div class="calc-result" id="res-courtfee" style="display:none"></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Courts Panel -->
-<div class="panel-overlay" id="panel-courts" onclick="closePanelIfOutside(event,'courts')">
-  <div class="panel">
-    <div class="panel-header">
-      <h2>🏛️ Courts Guide</h2>
-      <button class="panel-close" onclick="closePanel('courts')">✕</button>
-    </div>
-    <div class="panel-body">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Select a court to understand jurisdiction, filing process, and fees.</p>
-      <div id="courtsList"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Draft Panel -->
+<!-- DRAFT TEMPLATES -->
 <div class="panel-overlay" id="panel-draft" onclick="closePanelIfOutside(event,'draft')">
   <div class="panel">
     <div class="panel-header">
-      <h2>✍️ Draft Templates</h2>
+      <span class="panel-title">✍️ Draft Templates</span>
       <button class="panel-close" onclick="closePanel('draft')">✕</button>
     </div>
     <div class="panel-body">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Select a template and I'll draft it for you with the right legal language.</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Click any template — LexAI will ask you the right questions, then draft a complete, professional document.</p>
       <div id="draftList"></div>
     </div>
   </div>
 </div>
 
-<!-- Letterhead Panel -->
+<!-- CASE TRACKER -->
+<div class="panel-overlay" id="panel-tracker" onclick="closePanelIfOutside(event,'tracker')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📁 Case Tracker</span>
+      <button class="panel-close" onclick="closePanel('tracker')">✕</button>
+    </div>
+    <div class="panel-body">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Track your matters, next dates, and stages. Stored locally.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+        <input id="ct_name" placeholder="Case name / title" style="border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+        <div style="display:flex;gap:8px;">
+          <input id="ct_cnr" placeholder="CNR / Case No." style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+          <input id="ct_date" type="date" style="border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+        </div>
+        <div style="display:flex;gap:8px;">
+          <select id="ct_stage" style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+            <option value="">Stage</option>
+            <option value="filing">Filing Stage</option>
+            <option value="arguments">Arguments</option>
+            <option value="evidence">Evidence Stage</option>
+            <option value="reserved">Reserved for Judgment</option>
+            <option value="appeal">Appeal Filed</option>
+          </select>
+          <select id="ct_color" style="border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+            <option value="">Priority</option>
+            <option value="green">🟢 Normal</option>
+            <option value="orange">🟡 Urgent</option>
+            <option value="red">🔴 Critical</option>
+          </select>
+        </div>
+        <button onclick="addCase()" style="background:var(--navy);color:#fff;border:none;padding:9px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Add Case</button>
+      </div>
+      <div id="caseList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LAW UPDATES -->
+<div class="panel-overlay" id="panel-updates" onclick="closePanelIfOutside(event,'updates')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📰 Law Updates</span>
+      <button class="panel-close" onclick="closePanel('updates')">✕</button>
+    </div>
+    <div class="panel-body">
+      <div id="updatesLoading" style="display:none;text-align:center;padding:30px">
+        <div class="typing" style="justify-content:center"><span></span><span></span><span></span></div>
+        <p style="margin-top:10px;font-size:13px;color:var(--muted)">Fetching latest updates…</p>
+      </div>
+      <div id="updatesList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- COURTS GUIDE -->
+<div class="panel-overlay" id="panel-courts" onclick="closePanelIfOutside(event,'courts')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🏛️ Courts Guide</span>
+      <button class="panel-close" onclick="closePanel('courts')">✕</button>
+    </div>
+    <div class="panel-body">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Click any court — AI explains filing procedure, fees, and timelines.</p>
+      <div id="courtsList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLIANCE CALENDAR -->
+<div class="panel-overlay" id="panel-compliance" onclick="closePanelIfOutside(event,'compliance')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📅 Compliance Calendar</span>
+      <button class="panel-close" onclick="closePanel('compliance')">✕</button>
+    </div>
+    <div class="panel-body">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Key legal and tax deadlines — India 2025-26</p>
+      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+        <button class="calc-tab active" onclick="switchCompliance(this,'all')">All</button>
+        <button class="calc-tab" onclick="switchCompliance(this,'tax')">Tax</button>
+        <button class="calc-tab" onclick="switchCompliance(this,'gst')">GST</button>
+        <button class="calc-tab" onclick="switchCompliance(this,'roc')">ROC</button>
+        <button class="calc-tab" onclick="switchCompliance(this,'court')">Courts</button>
+      </div>
+      <div id="complianceList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RTI GENERATOR -->
+<div class="panel-overlay" id="panel-rti" onclick="closePanelIfOutside(event,'rti')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📮 RTI Application</span>
+      <button class="panel-close" onclick="closePanel('rti')">✕</button>
+    </div>
+    <div class="panel-body">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Generate a ready-to-file RTI application. Fee: ₹10 for Central, state fees vary.</p>
+      <div class="rti-step"><label>Your Name</label><input id="rti_name" placeholder="Full name as per ID"></div>
+      <div class="rti-step"><label>Your Address</label><textarea id="rti_addr" placeholder="Complete postal address with PIN"></textarea></div>
+      <div class="rti-step"><label>Public Authority (Ministry / Department)</label><input id="rti_auth" placeholder="e.g. Ministry of Health, DDA, Municipal Corporation"></div>
+      <div class="rti-step"><label>Information Requested (be specific)</label><textarea id="rti_info" placeholder="e.g. Certified copy of file noting regarding approval of project XYZ, dated between 01-01-2024 and 01-06-2024…" style="min-height:90px"></textarea></div>
+      <div class="rti-step"><label>Period of Information</label>
+        <div style="display:flex;gap:8px;">
+          <input id="rti_from" type="date" style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+          <input id="rti_to" type="date" style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="generateRTI()">Generate RTI Application</button>
+      <div id="rtiOutput" style="display:none;margin-top:14px;background:var(--cream2);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:12px;line-height:1.7;white-space:pre-wrap;font-family:monospace"></div>
+      <button id="rtiSendBtn" style="display:none;margin-top:10px;background:var(--navy);color:#fff;border:none;padding:10px;border-radius:8px;width:100%;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif" onclick="sendRTIToChat()">Ask AI to Review & Improve</button>
+    </div>
+  </div>
+</div>
+
+<!-- ECOURTS STATUS -->
+<div class="panel-overlay" id="panel-ecourts" onclick="closePanelIfOutside(event,'ecourts')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">⚡ eCourts Lookup</span>
+      <button class="panel-close" onclick="closePanel('ecourts')">✕</button>
+    </div>
+    <div class="panel-body">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Search eCourts case status by CNR number or party name. LexAI will search via AI and the official portal.</p>
+      <div class="cnr-lookup">
+        <input id="cnrInput" placeholder="Enter CNR number e.g. DLHC010023242024" onkeydown="if(event.key==='Enter')lookupCNR()">
+        <button class="search-btn" onclick="lookupCNR()">Search</button>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-bottom:16px;">CNR = Court Number of Registration (unique case ID on eCourts)</p>
+      <div style="border-top:1px solid var(--border);padding-top:14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">Search by Party Name</div>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <input id="partyInput" placeholder="Party name + court e.g. Sharma vs State Delhi HC" style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;">
+          <button class="search-btn" onclick="searchParty()">Find</button>
+        </div>
+      </div>
+      <div id="ecourtsResult"></div>
+      <p style="font-size:11px;color:var(--muted);margin-top:14px;">🔗 Official: <a href="https://ecourts.gov.in" target="_blank" style="color:var(--navy)">ecourts.gov.in</a> | SC: <a href="https://sci.gov.in" target="_blank" style="color:var(--navy)">sci.gov.in</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- DUE DILIGENCE CHECKLISTS -->
+<div class="panel-overlay" id="panel-checklist" onclick="closePanelIfOutside(event,'checklist')">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">✅ Legal Checklists</span>
+      <button class="panel-close" onclick="closePanel('checklist')">✕</button>
+    </div>
+    <div class="panel-body">
+      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+        <button class="calc-tab active" onclick="switchChecklist(this,'property')">Property Buy</button>
+        <button class="calc-tab" onclick="switchChecklist(this,'startup')">Startup DD</button>
+        <button class="calc-tab" onclick="switchChecklist(this,'employment')">Employment</button>
+        <button class="calc-tab" onclick="switchChecklist(this,'divorce')">Divorce Docs</button>
+        <button class="calc-tab" onclick="switchChecklist(this,'rera')">RERA Complaint</button>
+      </div>
+      <div id="checklistContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LETTERHEAD / FIRM -->
 <div class="panel-overlay" id="panel-letterhead" onclick="closePanelIfOutside(event,'letterhead')">
   <div class="panel">
     <div class="panel-header">
-      <h2>🖨️ Letterhead</h2>
+      <span class="panel-title">🖨️ Firm Settings</span>
       <button class="panel-close" onclick="closePanel('letterhead')">✕</button>
     </div>
     <div class="panel-body">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Upload your firm's letterhead. All drafted documents will be formatted for printing on it.</p>
-      <div class="upload-zone" onclick="document.getElementById('letterheadFile').click()">
-        <div style="font-size:32px">📄</div>
-        <p><strong>Click to upload letterhead</strong><br>PNG, JPG or PDF • Max 5MB</p>
-        <input type="file" id="letterheadFile" accept=".png,.jpg,.jpeg,.pdf" style="display:none" onchange="handleLetterhead(this)">
-      </div>
-      <div id="letterheadPreview" style="margin-top:16px;display:none">
-        <p style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px">✅ Letterhead uploaded</p>
-        <img id="letterheadImg" style="width:100%;border:1px solid var(--border);border-radius:8px;" />
-      </div>
-      <div style="margin-top:20px;padding:14px;background:rgba(15,31,61,.04);border-radius:8px">
-        <p style="font-size:12.5px;color:var(--navy);font-weight:600;margin-bottom:6px">Firm Details</p>
-        <input type="text" placeholder="Firm / Advocate Name" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;margin-bottom:8px;outline:none;font-family:'DM Sans',sans-serif" id="firmName">
-        <input type="text" placeholder="Bar Council No." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;outline:none;font-family:'DM Sans',sans-serif" id="barNo">
+      <p style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">Firm / Advocate Name</p>
+      <input id="firmNameInput" placeholder="e.g. Sharma & Associates" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:14px;" oninput="saveFirmName(this.value)">
+      <p style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">Letterhead Image</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Upload your firm letterhead (PNG/JPG/PDF). Used as header when drafting documents.</p>
+      <label style="display:block;background:var(--cream2);border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;font-size:13px;color:var(--muted)">
+        📁 Click to upload letterhead
+        <input type="file" style="display:none" accept=".png,.jpg,.jpeg,.pdf" onchange="handleLetterhead(this)">
+      </label>
+      <div id="letterheadPreview" style="margin-top:12px">
+        <img id="letterheadImg" style="max-width:100%;border-radius:6px;border:1px solid var(--border)">
+        <button onclick="clearLetterhead()" style="margin-top:8px;background:none;border:1px solid var(--red);color:var(--red);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;">Remove Letterhead</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ============================== SCRIPT ============================== -->
 <script>
+const EDGE_URL = 'https://mhyhozvoxggthypdybse.supabase.co/functions/v1/chat';
+const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1oeWhvenZveGdndGh5cGR5YnNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwMjc5MzMsImV4cCI6MjA4ODYwMzkzM30.z7EiqmmbPlz7D4IdfCwPxuM6zQpPYvJgnuSZVb5AWe0';
+
 // ==================== STATE ====================
 const state = {
   mode: 'lawyer',
@@ -590,35 +748,210 @@ const state = {
   messages: [],
   letterhead: localStorage.getItem('lexai_letterhead') || null,
   firmName: localStorage.getItem('lexai_firm') || '',
-  loading: false
+  loading: false,
+  cases: JSON.parse(localStorage.getItem('lexai_cases') || '[]'),
+  complianceFilter: 'all',
+  checklistFilter: 'property',
 };
 
 const COUNTRY_LABELS = { india:'🇮🇳 Indian Law', usa:'🇺🇸 US Law', uae:'🇦🇪 UAE Law', uk:'🇬🇧 UK Law', singapore:'🇸🇬 Singapore Law' };
-const COURT_LABELS = { '':'All Courts', supreme:'Supreme Court', high:'High Court', district:'District Court', consumer:'Consumer Forum', tribunal:'Tribunal' };
+const COURT_LABELS = { '':'All Courts', supreme:'Supreme Court', high:'High Court', district:'District Court', consumer:'Consumer Forum', tribunal:'Tribunal / NCLT' };
 const SPEC_LABELS = { '':'All Areas', criminal:'Criminal', civil:'Civil', family:'Family', corporate:'Corporate', tax:'Tax', ip:'IP & Patents', immigration:'Immigration', realestate:'Real Estate', constitutional:'Constitutional', labour:'Labour' };
 
 const COURTS_DATA = {
   india: [
-    { name:'Supreme Court of India', desc:'Apex court. Handles constitutional matters, appeals from High Courts. Located in New Delhi.', filing:'Special Leave Petition (SLP), Writ Petitions under Article 32' },
-    { name:'High Courts (25)', desc:'Each state has a High Court. Handles appeals from District Courts and original writ petitions under Article 226.', filing:'Writ Petition, First Appeal, Criminal Appeal' },
-    { name:'District & Sessions Court', desc:'Trial court for civil and criminal matters. Sessions court for serious criminal offences.', filing:'Plaint, FIR-based trials, Civil Suits' },
-    { name:'Consumer Disputes Redressal Forum', desc:'District/State/National level. For consumer grievances against goods and services.', filing:'Consumer Complaint Form, ₹0 filing fee up to ₹5L' },
-    { name:'National Green Tribunal', desc:'Specialized for environmental disputes. Faster than civil courts.', filing:'Application under NGT Act' },
-    { name:'NCLT / NCLAT', desc:'National Company Law Tribunal for insolvency, mergers, company disputes.', filing:'Petition under Companies Act / IBC' },
-    { name:'Income Tax Appellate Tribunal', desc:'Appeals against IT Commissioner orders. No court fee.', filing:'Form 36, within 60 days of order' },
+    { name:'Supreme Court of India', desc:'Apex court — constitutional matters, Article 32 writs, SLPs from all High Courts. New Delhi.', filing:'SLP under Article 136, Writ Petition (Article 32), Transfer Petition' },
+    { name:'High Courts (25 in India)', desc:'Each state/UT. Original writ jurisdiction under Article 226, appeals from District Courts.', filing:'Writ Petition, First Appeal, Criminal Appeal, Revision' },
+    { name:'District & Sessions Court', desc:'Trial court. Civil suits, criminal trials for serious offences (Sessions), District Judge.', filing:'Plaint (civil), Charge Sheet trials (criminal), Applications' },
+    { name:'Consumer Disputes Redressal Forums', desc:'District (<₹50L), State (₹50L-2Cr), National (>₹2Cr). Zero/minimal filing fee.', filing:'Consumer Complaint — no lawyer required, simple format' },
+    { name:'NCLT / NCLAT', desc:'National Company Law Tribunal — insolvency (IBC), mergers, company disputes, winding up.', filing:'Section 7/9/10 (IBC), Company Petition' },
+    { name:'Income Tax Appellate Tribunal (ITAT)', desc:'Tax appeals after CIT(A) order. No court fee. Each city has ITAT benches.', filing:'Form 36 appeal within 60 days of CIT(A) order' },
+    { name:'National Green Tribunal (NGT)', desc:'Environmental disputes — pollution, forest, wildlife, coastal regulation zone violations.', filing:'Application under NGT Act 2010' },
+  ],
+  usa: [
+    { name:'US Supreme Court', desc:'Highest court. Certiorari petitions from Courts of Appeals or state supreme courts.', filing:'Petition for Writ of Certiorari (cert petition)' },
+    { name:'US Courts of Appeals (Circuit Courts)', desc:'13 circuits. Appeals from District Courts. No new evidence — law only.', filing:'Notice of Appeal within 30 days of final judgment' },
+    { name:'US District Courts', desc:'Trial courts. Civil cases >$75K, federal question cases, criminal federal cases.', filing:'Complaint (civil), Indictment (criminal)' },
+    { name:'State Courts', desc:'Each state has own system — typically trial court → appellate court → state supreme court.', filing:'Varies by state and case type' },
+    { name:'Bankruptcy Court', desc:'Federal court — Chapter 7 (liquidation), Chapter 11 (reorganization), Chapter 13 (wage earner).', filing:'Voluntary petition with means test' },
+    { name:'Immigration Court (EOIR)', desc:'Administrative court for removal (deportation) proceedings. Not Article III court.', filing:'Hearing before immigration judge; appeal to BIA' },
   ]
 };
 
 const DRAFT_TEMPLATES = [
-  { icon:'📋', name:'Rental Agreement', desc:'Residential / Commercial lease deed', prompt:'Draft a comprehensive rental agreement for a residential property in India with all standard clauses.' },
-  { icon:'⚖️', name:'Legal Notice', desc:'Demand notice, cheque bounce, property dispute', prompt:'Draft a legal notice for cheque dishonour under Section 138 NI Act.' },
-  { icon:'💼', name:'Employment Agreement', desc:'Offer letter, employment contract', prompt:'Draft an employment agreement for a senior software engineer with IP assignment clauses.' },
-  { icon:'🤝', name:'MOU / NDA', desc:'Non-disclosure, collaboration agreement', prompt:'Draft a mutual NDA between two companies exploring a business partnership.' },
-  { icon:'🏠', name:'Sale Deed', desc:'Property sale and transfer document', prompt:'Draft a property sale deed for residential flat transfer in India.' },
-  { icon:'📜', name:'Power of Attorney', desc:'General or special POA', prompt:'Draft a General Power of Attorney authorizing a family member to manage property affairs.' },
-  { icon:'🧾', name:'Affidavit', desc:'Sworn statement for court or government', prompt:'Draft a general affidavit template for court submission.' },
-  { icon:'⚡', name:'Bail Application', desc:'Regular bail, anticipatory bail', prompt:'Draft a bail application for a person arrested under IPC Section 420.' },
+  { icon:'📋', name:'Rental Agreement', desc:'Residential / Commercial lease deed', intake: true, questions: [
+    { q: 'Is this residential or commercial property?', type:'choice', options:['Residential','Commercial','Mixed Use'] },
+    { q: 'Which city / state is the property in?', type:'text', placeholder:'e.g. Delhi' },
+    { q: 'Monthly rent amount (₹)?', type:'text', placeholder:'e.g. 25000' },
+    { q: 'Security deposit amount (₹)?', type:'text', placeholder:'e.g. 75000' },
+    { q: 'Lease duration (months)?', type:'text', placeholder:'e.g. 11' },
+    { q: 'Landlord name?', type:'text', placeholder:'Full name' },
+    { q: 'Tenant name?', type:'text', placeholder:'Full name' },
+    { q: 'Any special conditions? (parking, pets, maintenance, etc.)', type:'text', placeholder:'e.g. parking included, no pets' },
+  ]},
+  { icon:'⚖️', name:'Legal Notice', desc:'Demand notice, cheque bounce, property dispute', intake: true, questions: [
+    { q: 'What type of legal notice?', type:'choice', options:['Cheque Bounce (Sec 138 NI Act)','Property / Rent Dispute','Recovery of Money','Service Deficiency','Employment Dispute','Other'] },
+    { q: 'Who is the notice being sent to? (name and address)', type:'text', placeholder:'Name, Address' },
+    { q: 'Amount involved (₹)?', type:'text', placeholder:'e.g. 500000' },
+    { q: 'Brief facts of the dispute?', type:'text', placeholder:'What happened, when, and what you want' },
+    { q: 'Notice period demanded?', type:'choice', options:['15 days','30 days','60 days'] },
+  ]},
+  { icon:'💼', name:'Employment Agreement', desc:'Offer letter, employment contract', intake: true, questions: [
+    { q: 'Company name?', type:'text', placeholder:'Full legal name' },
+    { q: 'Employee name and designation?', type:'text', placeholder:'Name, Job Title' },
+    { q: 'Monthly CTC (₹)?', type:'text', placeholder:'e.g. 150000' },
+    { q: 'Notice period?', type:'choice', options:['1 month','2 months','3 months','6 months'] },
+    { q: 'Should it include IP assignment & confidentiality?', type:'choice', options:['Yes — full IP + confidentiality','Yes — confidentiality only','No'] },
+    { q: 'Non-compete clause?', type:'choice', options:['Non-solicitation only (enforceable)','Full non-compete (risky in India)','None'] },
+  ]},
+  { icon:'🤝', name:'MOU / NDA', desc:'Non-disclosure, collaboration agreement', intake: true, questions: [
+    { q: 'MOU or NDA?', type:'choice', options:['NDA (Non-Disclosure Agreement)','MOU (Memorandum of Understanding)','NDA + MOU combined'] },
+    { q: 'Mutual or one-way?', type:'choice', options:['Mutual — both parties share info','One-way — only one party shares'] },
+    { q: 'Party 1 name (your company)?', type:'text', placeholder:'Company / individual name' },
+    { q: 'Party 2 name?', type:'text', placeholder:'Company / individual name' },
+    { q: 'Purpose of agreement?', type:'text', placeholder:'e.g. exploring business partnership for software development' },
+    { q: 'Duration of NDA?', type:'choice', options:['1 year','2 years','3 years','5 years','Perpetual'] },
+  ]},
+  { icon:'🏠', name:'Sale Deed', desc:'Property sale and transfer document', intake: true, questions: [
+    { q: 'Property type?', type:'choice', options:['Residential Flat / Apartment','Independent House / Villa','Commercial Property','Plot / Land'] },
+    { q: 'Property address?', type:'text', placeholder:'Full address with area, city, state' },
+    { q: 'Sale consideration (₹)?', type:'text', placeholder:'e.g. 5000000' },
+    { q: 'Seller name and address?', type:'text', placeholder:'Full name, address' },
+    { q: 'Buyer name and address?', type:'text', placeholder:'Full name, address' },
+    { q: 'Any encumbrances / loans on property?', type:'choice', options:['No encumbrances — clear title','Home loan (to be discharged)','Other'] },
+  ]},
+  { icon:'📜', name:'Power of Attorney', desc:'General or special POA', intake: true, questions: [
+    { q: 'General or Specific POA?', type:'choice', options:['General POA — all matters','Specific POA — property only','Specific POA — banking only','Specific POA — litigation only'] },
+    { q: 'Grantor (who gives the POA) name?', type:'text', placeholder:'Full name, address' },
+    { q: 'Attorney (who receives power) name?', type:'text', placeholder:'Full name, relationship' },
+    { q: 'Specific purpose / scope?', type:'text', placeholder:'e.g. sell property at X address, appear in Y case' },
+    { q: 'Duration of POA?', type:'choice', options:['Until revoked','1 year','2 years','Specific date'] },
+  ]},
+  { icon:'🧾', name:'Affidavit', desc:'Sworn statement for court or government', intake: true, questions: [
+    { q: 'Purpose of affidavit?', type:'choice', options:['Court submission','Government / Official use','Age / Name declaration','Address proof','Income declaration','Lost document','Other'] },
+    { q: 'Deponent (person swearing) name?', type:'text', placeholder:'Full name' },
+    { q: 'Facts to be stated in the affidavit?', type:'text', placeholder:'Briefly describe what you need to declare' },
+    { q: 'Where will it be submitted?', type:'text', placeholder:'e.g. Delhi High Court, Passport Office, etc.' },
+  ]},
+  { icon:'⚡', name:'Bail Application', desc:'Regular bail, anticipatory bail', intake: true, questions: [
+    { q: 'Type of bail?', type:'choice', options:['Regular Bail (Section 436/437/439 BNSS)','Anticipatory Bail (Section 482 BNSS)','Default Bail (Section 479 BNSS — chargesheet not filed)'] },
+    { q: 'Name and age of accused?', type:'text', placeholder:'Full name, age' },
+    { q: 'Offence / Sections charged under?', type:'text', placeholder:'e.g. BNS 318, 420 — cheating; IPC 304B' },
+    { q: 'Date of arrest / FIR number?', type:'text', placeholder:'e.g. 01-01-2024, FIR No. 12/2024' },
+    { q: 'Which court to file in?', type:'text', placeholder:'e.g. Sessions Court Delhi, Punjab & Haryana HC' },
+    { q: 'Key grounds for bail? (family, medical, sureties, first offender?)', type:'text', placeholder:'e.g. first offender, sole breadwinner, serious illness' },
+  ]},
+  { icon:'⚡', name:'RERA Complaint', desc:'Against builder for delay / defects / false promises', intake: true, questions: [
+    { q: 'What is your complaint about?', type:'choice', options:['Delayed possession','Construction defects','False representation / misleading advertisement','Refund of money','Other'] },
+    { q: 'Project name and RERA registration number?', type:'text', placeholder:'Project name, RERA Reg No.' },
+    { q: 'Builder / promoter name?', type:'text', placeholder:'Developer company name' },
+    { q: 'Amount paid (₹) and date of agreement?', type:'text', placeholder:'e.g. ₹50 lakhs, agreement 15-03-2019' },
+    { q: 'Promised possession date and actual situation?', type:'text', placeholder:'e.g. promised June 2022, not given yet' },
+    { q: 'Your name and state (which state RERA)?', type:'text', placeholder:'Name, State' },
+  ]},
+  { icon:'💼', name:'Board Resolution', desc:'Company board resolution for any corporate action', intake: true, questions: [
+    { q: 'Purpose of resolution?', type:'choice', options:['Bank account opening','Director appointment','Director resignation','Investment / loan approval','Property purchase/sale','ESOP grant','Annual accounts adoption','Other'] },
+    { q: 'Company name (full legal name)?', type:'text', placeholder:'XYZ Private Limited' },
+    { q: 'Date of board meeting?', type:'text', placeholder:'e.g. 15-03-2026' },
+    { q: 'Directors present at meeting?', type:'text', placeholder:'Names of directors present' },
+    { q: 'Key details of the resolution?', type:'text', placeholder:'Specific details — amounts, names, limits, etc.' },
+  ]},
+  { icon:'📋', name:'Due Diligence Checklist', desc:'Legal DD for property / startup / M&A', intake: true, questions: [
+    { q: 'Due diligence for what purpose?', type:'choice', options:['Property purchase','Startup investment (Series A/B)','M&A acquisition','Partnership / JV','Employment joining'] },
+    { q: 'Target entity / property location?', type:'text', placeholder:'Company name or property address' },
+    { q: 'Deal value / budget (₹)?', type:'text', placeholder:'Approximate deal size' },
+    { q: 'Any specific areas of concern?', type:'text', placeholder:'e.g. litigation history, IP ownership, title disputes' },
+  ]},
 ];
+
+// ==================== INTAKE WIZARD ====================
+let intakeState = null;
+
+function startDraft(templateIndex) {
+  const t = DRAFT_TEMPLATES[templateIndex];
+  closePanel('draft');
+
+  if (!t.intake) {
+    document.getElementById('chatInput').value = t.prompt || `Draft a ${t.name}`;
+    sendMessage();
+    return;
+  }
+
+  intakeState = {
+    template: t,
+    currentQ: 0,
+    answers: []
+  };
+
+  // Hide welcome, show chat
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
+
+  const greeting = `📝 **${t.name}** — I'll ask you a few questions to draft this properly.\n\n**Question 1 of ${t.questions.length}:** ${t.questions[0].q}`;
+  appendMessageToDOM('ai', greeting, true, t.questions[0]);
+}
+
+function handleIntakeAnswer(answer) {
+  if (!intakeState) return;
+
+  const q = intakeState.template.questions[intakeState.currentQ];
+  intakeState.answers.push({ question: q.q, answer });
+  intakeState.currentQ++;
+
+  // Show user's answer
+  appendMessageToDOM('user', answer);
+  state.messages.push({ role: 'user', content: answer });
+
+  if (intakeState.currentQ >= intakeState.template.questions.length) {
+    // All answered — draft now
+    const summary = intakeState.answers.map((a, i) => `${i+1}. ${a.question}\n   → ${a.answer}`).join('\n');
+    const prompt = `Draft a professional, complete ${intakeState.template.name} based on these details:\n\n${summary}\n\nGenerate a full, ready-to-use document with all standard clauses, proper format, and numbered paragraphs. Include all legally required elements.`;
+
+    intakeState = null;
+    document.getElementById('chatInput').value = '';
+    sendMessageWithText(prompt);
+  } else {
+    // Next question
+    const nextQ = intakeState.template.questions[intakeState.currentQ];
+    const msg = `✅ Got it. **Question ${intakeState.currentQ + 1} of ${intakeState.template.questions.length}:** ${nextQ.q}`;
+    appendMessageToDOM('ai', msg, true, nextQ);
+  }
+}
+
+function appendMessageToDOM(role, content, scroll = true, questionData = null) {
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
+  const container = document.getElementById('messages');
+  const time = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  const avatar = role === 'ai' ? 'L' : '👤';
+
+  let extra = '';
+  if (questionData && role === 'ai') {
+    if (questionData.type === 'choice' && questionData.options) {
+      extra = `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">${questionData.options.map(o => `<button onclick="handleIntakeAnswer('${escHtml(o)}')" style="background:var(--cream2);border:1px solid var(--border);padding:6px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s" onmouseover="this.style.background='var(--navy)';this.style.color='#fff'" onmouseout="this.style.background='var(--cream2)';this.style.color='';">${o}</button>`).join('')}</div>`;
+    } else if (questionData.type === 'text') {
+      extra = `<div style="margin-top:10px;display:flex;gap:6px;"><input id="intakeInput_${Date.now()}" placeholder="${questionData.placeholder||'Your answer'}" onkeydown="if(event.key==='Enter')submitIntakeInput(this)" style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:7px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;"><button onclick="submitIntakeInput(this.previousElementSibling)" style="background:var(--navy);color:#fff;border:none;padding:7px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">Next →</button></div>`;
+    }
+  }
+
+  const formatted = role === 'ai' ? formatAIMessage(content) : escHtml(content);
+  const html = `<div class="msg ${role}">
+    <div class="msg-avatar">${avatar}</div>
+    <div class="msg-content">
+      <div class="msg-bubble">${formatted}${extra}</div>
+      <div class="msg-meta">${time}</div>
+    </div>
+  </div>`;
+  container.insertAdjacentHTML('beforeend', html);
+  if (scroll) container.scrollTop = container.scrollHeight;
+}
+
+function submitIntakeInput(input) {
+  const val = input.value.trim();
+  if (!val) return;
+  input.closest('.msg-bubble').querySelector('input').disabled = true;
+  handleIntakeAnswer(val);
+}
 
 // ==================== INIT ====================
 function init() {
@@ -628,9 +961,13 @@ function init() {
     document.getElementById('letterheadPreview').style.display = 'block';
     document.getElementById('letterheadImg').src = state.letterhead;
   }
+  if (state.firmName) document.getElementById('firmNameInput').value = state.firmName;
   renderCourts();
   renderDrafts();
-  // Auto-load updates when panel opens
+  renderCaseTracker();
+  loadComplianceCalendar('all');
+  loadChecklist('property');
+  loadUpdates();
 }
 
 // ==================== MODE ====================
@@ -639,25 +976,6 @@ function setMode(mode) {
   document.getElementById('lawyerBtn').classList.toggle('active', mode === 'lawyer');
   document.getElementById('citizenBtn').classList.toggle('active', mode === 'citizen');
   document.getElementById('modePill').textContent = mode === 'lawyer' ? '⚖️ Lawyer Mode' : '👤 Citizen Mode';
-  document.getElementById('letterheadBtn').style.opacity = mode === 'lawyer' ? '1' : '0.4';
-  updateWelcomeChips();
-}
-
-function updateWelcomeChips() {
-  const chips = document.querySelectorAll('.welcome-chips .chip');
-  if (state.mode === 'citizen') {
-    const citizenChips = [
-      '💬 How do I file an FIR?',
-      '🏠 My landlord is harassing me',
-      '💰 My salary was not paid',
-      '📱 I was cheated online',
-      '👪 I want a divorce',
-      '🔍 Know my rights as employee',
-      '📋 What is consumer protection?',
-      '⚡ Police arrested me wrongly',
-    ];
-    chips.forEach((c,i) => { c.textContent = citizenChips[i] || c.textContent; });
-  }
 }
 
 // ==================== CONTEXT ====================
@@ -665,113 +983,141 @@ function updateContext() {
   state.country = document.getElementById('countrySelect').value;
   state.court = document.getElementById('courtSelect').value;
   state.spec = document.getElementById('specSelect').value;
-
-  document.getElementById('countryPill').textContent = COUNTRY_LABELS[state.country];
-  document.getElementById('countryPill').classList.add('set');
+  const cn = { india:'🇮🇳 Indian Law', usa:'🇺🇸 US Law', uae:'🇦🇪 UAE Law', uk:'🇬🇧 UK Law', singapore:'🇸🇬 Singapore Law' };
+  document.getElementById('countryPill').textContent = cn[state.country];
   document.getElementById('courtPill').textContent = COURT_LABELS[state.court] || 'All Courts';
-  document.getElementById('courtPill').classList.toggle('set', !!state.court);
   document.getElementById('specPill').textContent = SPEC_LABELS[state.spec] || 'All Areas';
-  document.getElementById('specPill').classList.toggle('set', !!state.spec);
   renderCourts();
 }
 
 // ==================== CHAT HISTORY ====================
 function renderChatHistory() {
-  const container = document.getElementById('chatHistory');
-  if (!state.chats.length) {
-    container.innerHTML = '<div style="padding:20px 14px;font-size:12px;color:rgba(255,255,255,.3);text-align:center">No chats yet</div>';
+  const chats = state.chats;
+  if (!chats.length) {
+    document.getElementById('sidebarChats').innerHTML = '<div style="padding:12px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">No conversations yet</div>';
     return;
   }
-  const today = [], yesterday = [], older = [];
-  const now = Date.now();
-  state.chats.forEach(c => {
-    const age = now - c.updatedAt;
-    if (age < 86400000) today.push(c);
-    else if (age < 172800000) yesterday.push(c);
-    else older.push(c);
-  });
-  let html = '';
-  if (today.length) { html += '<div class="sidebar-section">Today</div>'; today.forEach(c => html += chatItemHTML(c)); }
-  if (yesterday.length) { html += '<div class="sidebar-section">Yesterday</div>'; yesterday.forEach(c => html += chatItemHTML(c)); }
-  if (older.length) { html += '<div class="sidebar-section">Older</div>'; older.forEach(c => html += chatItemHTML(c)); }
-  container.innerHTML = html;
-}
-
-function chatItemHTML(chat) {
-  const active = chat.id === state.currentChatId ? 'active' : '';
-  return `<div class="chat-item ${active}" onclick="loadChat('${chat.id}')">
-    <span class="chat-item-icon">💬</span>
-    ${escHtml(chat.title || 'Untitled')}
-  </div>`;
+  const html = chats.slice().reverse().map(c => `
+    <div class="chat-item ${c.id === state.currentChatId ? 'active' : ''}" onclick="loadChat('${c.id}')">
+      <div class="chat-title">${escHtml(c.title || 'Conversation')}</div>
+      <div class="chat-time">${new Date(c.updatedAt).toLocaleDateString()}</div>
+    </div>
+  `).join('');
+  document.getElementById('sidebarChats').innerHTML = html;
 }
 
 function newChat() {
   state.currentChatId = null;
   state.messages = [];
-  document.getElementById('messages').innerHTML = document.querySelector('.welcome').outerHTML;
-  renderChatHistory();
+  intakeState = null;
+  const m = document.getElementById('messages');
+  m.innerHTML = `<div class="welcome" id="welcome">
+    <h2>Good day, Counsellor</h2>
+    <p>Ask a legal question, name a case, or pick a template below.</p>
+    <div class="welcome-chips" id="welcomeChips">
+      <span class="chip" onclick="sendChip(this)">⚖️ Draft bail application for BNS 318</span>
+      <span class="chip" onclick="sendChip(this)">🔍 Arnesh Kumar guidelines on arrest</span>
+      <span class="chip" onclick="sendChip(this)">📋 Limitation period for recovery suit</span>
+      <span class="chip" onclick="sendChip(this)">💼 SHA with ROFR drag-along</span>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      <span class="calc-chip" onclick="openPanel('calc')">🧮 Maintenance Calculator</span>
+      <span class="calc-chip" onclick="openPanel('calc')">📊 Gratuity Calculator</span>
+      <span class="calc-chip" onclick="openPanel('rti')">📮 Generate RTI Application</span>
+    </div>
+  </div>`;
+  document.getElementById('chatInput').focus();
 }
 
 function loadChat(id) {
   const chat = state.chats.find(c => c.id === id);
   if (!chat) return;
   state.currentChatId = id;
-  state.messages = chat.messages || [];
+  state.messages = [...chat.messages];
+  intakeState = null;
   const container = document.getElementById('messages');
   container.innerHTML = '';
-  state.messages.forEach(m => appendMessageToDOM(m.role, m.content, false));
-  renderChatHistory();
+  state.messages.forEach(m => appendMessageToDOM(m.role === 'assistant' ? 'ai' : m.role, m.content, false));
   container.scrollTop = container.scrollHeight;
+  renderChatHistory();
 }
 
 function saveChat() {
   if (!state.messages.length) return;
-  const title = state.messages[0]?.content?.slice(0,40) || 'Untitled';
+  const firstUserMsg = state.messages.find(m => m.role === 'user');
+  const title = firstUserMsg ? firstUserMsg.content.slice(0, 45) : 'Conversation';
   if (state.currentChatId) {
     const idx = state.chats.findIndex(c => c.id === state.currentChatId);
-    if (idx >= 0) { state.chats[idx].messages = state.messages; state.chats[idx].updatedAt = Date.now(); }
+    if (idx !== -1) { state.chats[idx].messages = [...state.messages]; state.chats[idx].updatedAt = Date.now(); }
   } else {
     state.currentChatId = 'chat_' + Date.now();
-    state.chats.unshift({ id: state.currentChatId, title, messages: state.messages, updatedAt: Date.now() });
+    state.chats.push({ id: state.currentChatId, title, messages: [...state.messages], updatedAt: Date.now() });
   }
-  localStorage.setItem('lexai_chats', JSON.stringify(state.chats.slice(0, 50)));
+  localStorage.setItem('lexai_chats', JSON.stringify(state.chats));
   renderChatHistory();
 }
 
-// ==================== MESSAGING ====================
+// ==================== SYSTEM PROMPT ====================
 function buildSystemPrompt() {
   const countryName = { india:'India', usa:'United States', uae:'UAE', uk:'United Kingdom', singapore:'Singapore' }[state.country];
   const mode = state.mode === 'lawyer' ? 'professional lawyer' : 'ordinary citizen (use plain English, avoid jargon)';
   const spec = state.spec ? `Specialisation: ${SPEC_LABELS[state.spec]}.` : '';
   const court = state.court ? `Court context: ${COURT_LABELS[state.court]}.` : '';
+  const firm = state.firmName ? `User's firm: ${state.firmName}.` : '';
 
-  return `You are LexAI, an elite AI legal assistant — smarter than any generic AI when it comes to law.
+  return `You are LexAI, an elite AI legal assistant — smarter than ChatGPT or any generic AI for law.
 
-JURISDICTION: ${countryName} law ONLY (unless asked otherwise).
-USER TYPE: ${mode}.
-${spec} ${court}
+JURISDICTION: ${countryName} law. USER TYPE: ${mode}. ${spec} ${court} ${firm}
 
-RULES:
-1. Always cite specific Acts, Sections, and recent case law. Never give generic answers.
-2. For India: cite IPC/BNS, CPC, CrPC/BNSS, specific High Court / Supreme Court judgements with year.
-3. For USA: cite relevant Federal/State statutes, cite landmark cases (e.g., Miranda v. Arizona).
-4. Structure answers clearly: Key Law → What It Means → What User Should Do → Risks/Warnings.
-5. If drafting a document, produce a complete, professional draft with all standard clauses.
-6. Always mention if the law has been recently amended (BNS replaced IPC, BNSS replaced CrPC in India as of 2024).
-7. End complex answers with: "⚠️ This is legal information, not legal advice. Consult a licensed advocate for your specific case."
-8. If asked about recent judgements or updates, note your knowledge cutoff and recommend checking the official court websites.
-9. For Lawyer mode: use precise legal terminology. For Citizen mode: use simple English with analogies.
-10. Format responses with clear sections using **bold** for headings and • bullet points for lists.`;
+YOU HAVE LIVE WEB SEARCH. Always use it for:
+- Case names, FIRs, court orders, judgements → search first
+- Recent amendments (BNS/BNSS 2024, Finance Act, SEBI circulars, etc.)
+- Current processing times, fee structures, portal status
+
+━━━ CASE SEARCH PROTOCOL ━━━
+When user mentions ANY case name (e.g. "Lakshay vs State", "Smith v Jones", any party vs party):
+1. IMMEDIATELY search web for that case name + court + year (if given)
+2. List ALL matching cases found as a numbered list: court, year, subject matter
+3. Ask: "I found [N] cases. Which one do you mean? Reply with a number."
+4. NEVER assume or guess. Always list first, confirm, then analyse.
+If no exact match: say so clearly, ask for more details (FIR number, year, court, state).
+
+━━━ CLARIFYING QUESTIONS ━━━
+Ask 1-2 SHORT questions BEFORE answering ambiguous queries:
+- Situation queries → ask state/city, amount, date
+- "I want to file a case" → ask against whom, what happened, which city
+- Simple factual questions (IPC 302? What is bail?) → answer DIRECTLY, no questions
+- Draft requests → handled by intake form automatically
+
+━━━ BNS/BNSS CROSS-REFERENCE (CRITICAL for India) ━━━
+Always cite BOTH old and new sections:
+IPC 302 = BNS 103 (murder) | IPC 376 = BNS 64 (rape) | IPC 420 = BNS 318 (cheating)
+IPC 406 = BNS 316 (criminal breach of trust) | IPC 498A = BNS 85 (cruelty by husband)
+IPC 304B = BNS 80 (dowry death) | CrPC 167 = BNSS 187 | CrPC 438 = BNSS 482 (anticipatory bail)
+CrPC 125 = BNSS 144 (maintenance) | CrPC 197 = BNSS 218 | Section 313 CrPC = BNSS 351
+BNS/BNSS came into force July 1, 2024. Always mention both sets of sections.
+
+━━━ ANSWER FORMAT ━━━
+1. Cite real Acts + Sections + case citations (court, year). No generic answers.
+2. Structure: **Key Law** → **What It Means** → **What To Do** → **⚠️ Risks**
+3. For documents: produce complete, professional, ready-to-use draft.
+4. Lawyer mode: precise terminology. Citizen mode: plain English + real-world analogies.
+5. Use **bold headings**, numbered lists, bullets. Keep structured and scannable.
+6. When listing cases/options: always numbered list so user can reply with a number.
+7. End with: "⚠️ Legal information only, not legal advice. Consult a licensed advocate."`;
 }
 
+// ==================== MESSAGING ====================
 async function sendMessage(text) {
   const input = document.getElementById('chatInput');
   const msg = text || input.value.trim();
   if (!msg || state.loading) return;
   input.value = '';
   autoResize(input);
+  sendMessageWithText(msg);
+}
 
-  // Hide welcome
+async function sendMessageWithText(msg) {
   const welcome = document.getElementById('welcome');
   if (welcome) welcome.remove();
 
@@ -781,7 +1127,6 @@ async function sendMessage(text) {
   state.loading = true;
   document.getElementById('sendBtn').disabled = true;
 
-  // Show typing
   const typingId = 'typing_' + Date.now();
   const container = document.getElementById('messages');
   container.innerHTML += `<div class="msg ai" id="${typingId}">
@@ -791,13 +1136,13 @@ async function sendMessage(text) {
   container.scrollTop = container.scrollHeight;
 
   try {
-    const apiMessages = state.messages.slice(-20).map(m => ({ role: m.role, content: m.content }));
-    const res = await fetch('https://mhyhozvoxggthypdybse.supabase.co/functions/v1/chat', {
+    const apiMessages = state.messages.slice(-20).map(m => ({ role: m.role === 'ai' ? 'assistant' : m.role, content: m.content }));
+    const res = await fetch(EDGE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1oeWhvenZveGdndGh5cGR5YnNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwMjc5MzMsImV4cCI6MjA4ODYwMzkzM30.z7EiqmmbPlz7D4IdfCwPxuM6zQpPYvJgnuSZVb5AWe0' },
+      headers: { 'Content-Type': 'application/json', 'apikey': ANON_KEY },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1500,
+        max_tokens: 2500,
         system: buildSystemPrompt(),
         messages: apiMessages
       })
@@ -806,7 +1151,9 @@ async function sendMessage(text) {
     const reply = data.content?.[0]?.text || 'Sorry, I encountered an error. Please try again.';
 
     document.getElementById(typingId)?.remove();
-    appendMessageToDOM('ai', reply);
+
+    // Typewriter effect
+    typewriterAppend('ai', reply);
     state.messages.push({ role: 'assistant', content: reply });
     saveChat();
   } catch(e) {
@@ -816,25 +1163,37 @@ async function sendMessage(text) {
 
   state.loading = false;
   document.getElementById('sendBtn').disabled = false;
-  container.scrollTop = container.scrollHeight;
 }
 
-function appendMessageToDOM(role, content, scroll = true) {
-  const welcome = document.getElementById('welcome');
-  if (welcome) welcome.remove();
+function typewriterAppend(role, content) {
   const container = document.getElementById('messages');
   const time = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-  const avatar = role === 'ai' ? 'L' : '👤';
-  const formatted = role === 'ai' ? formatAIMessage(content) : escHtml(content);
-  const html = `<div class="msg ${role}">
-    <div class="msg-avatar">${avatar}</div>
+  const id = 'msg_' + Date.now();
+  container.innerHTML += `<div class="msg ai" id="${id}">
+    <div class="msg-avatar">L</div>
     <div class="msg-content">
-      <div class="msg-bubble">${formatted}</div>
+      <div class="msg-bubble" id="bubble_${id}"></div>
       <div class="msg-meta">${time}</div>
     </div>
   </div>`;
-  container.insertAdjacentHTML('beforeend', html);
-  if (scroll) container.scrollTop = container.scrollHeight;
+
+  const bubble = document.getElementById('bubble_' + id);
+  let i = 0;
+  const chunk = 5;
+  const delay = 8;
+
+  function tick() {
+    if (i >= content.length) {
+      bubble.innerHTML = formatAIMessage(content);
+      container.scrollTop = container.scrollHeight;
+      return;
+    }
+    i = Math.min(i + chunk, content.length);
+    bubble.innerHTML = formatAIMessage(content.slice(0, i)) + '<span class="cursor"></span>';
+    container.scrollTop = container.scrollHeight;
+    setTimeout(tick, delay);
+  }
+  tick();
 }
 
 function formatAIMessage(text) {
@@ -844,6 +1203,7 @@ function formatAIMessage(text) {
     .replace(/^## (.+)$/gm, '<span class="section-heading">$1</span>')
     .replace(/^• (.+)$/gm, '<li>$1</li>')
     .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li class="numbered"><span class="case-num">$1.</span> $2</li>')
     .replace(/(<li>.*<\/li>\n?)+/g, s => `<ul>${s}</ul>`)
     .replace(/⚠️ (.+)/g, '<div class="warning-box">⚠️ $1</div>')
     .replace(/ℹ️ (.+)/g, '<div class="info-box">ℹ️ $1</div>')
@@ -852,15 +1212,8 @@ function formatAIMessage(text) {
 }
 
 function sendChip(el) { sendMessage(el.textContent.replace(/^[^\s]+\s/, '')); }
-
-function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-}
-
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 160) + 'px';
-}
+function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 160) + 'px'; }
 
 // ==================== FILE UPLOAD ====================
 function handleFileUpload(input) {
@@ -868,14 +1221,15 @@ function handleFileUpload(input) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = e => {
-    const content = e.target.result;
-    document.getElementById('chatInput').value = `Please review this document and identify: 1) Key terms and obligations, 2) Any red flags or unfair clauses, 3) Missing standard clauses, 4) Overall risk assessment.\n\nDocument: ${file.name}\n\n${content.slice(0,4000)}`;
-    autoResize(document.getElementById('chatInput'));
+    const text = e.target.result;
+    const prompt = `I'm uploading a document titled "${file.name}" for your review.\n\n---\n${text.slice(0, 4000)}\n---\n\nPlease: 1) Summarise what this document is, 2) Identify key legal issues or risks, 3) Flag any unusual or concerning clauses, 4) Suggest what action I should take.`;
+    document.getElementById('chatInput').value = prompt.slice(0, 200) + '…';
+    sendMessageWithText(prompt);
   };
   reader.readAsText(file);
 }
 
-// ==================== LETTERHEAD ====================
+// ==================== LETTERHEAD / FIRM ====================
 function handleLetterhead(input) {
   const file = input.files[0];
   if (!file) return;
@@ -889,11 +1243,22 @@ function handleLetterhead(input) {
   reader.readAsDataURL(file);
 }
 
+function clearLetterhead() {
+  state.letterhead = null;
+  localStorage.removeItem('lexai_letterhead');
+  document.getElementById('letterheadPreview').style.display = 'none';
+}
+
+function saveFirmName(val) {
+  state.firmName = val;
+  localStorage.setItem('lexai_firm', val);
+}
+
 // ==================== PANELS ====================
 function openPanel(name) {
   closeAllPanels();
   document.getElementById('panel-' + name).classList.add('open');
-  if (name === 'updates') loadUpdates();
+  if (name === 'tracker') renderCaseTracker();
 }
 function closePanel(name) { document.getElementById('panel-' + name).classList.remove('open'); }
 function closeAllPanels() { document.querySelectorAll('.panel-overlay').forEach(p => p.classList.remove('open')); }
@@ -903,30 +1268,28 @@ function closePanelIfOutside(e, name) { if (e.target === e.currentTarget) closeP
 function searchLaw() {
   const q = document.getElementById('lawSearchInput').value.trim();
   if (!q) return;
-  document.getElementById('searchResults').innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted)"><div class="typing" style="justify-content:center"><span></span><span></span><span></span></div><p style="margin-top:10px;font-size:13px">Searching ${COUNTRY_LABELS[state.country]}...</p></div>`;
-
-  // Send to main chat for AI-powered search
   closePanel('search');
-  document.getElementById('chatInput').value = `Search the law: ${q}. Please provide: 1) Relevant Acts and Sections, 2) Key definitions, 3) Penalties/remedies, 4) Recent landmark judgements on this topic under ${COUNTRY_LABELS[state.country]}.`;
-  sendMessage();
+  sendMessageWithText(`Search and explain the law on: "${q}"\n\nPlease provide:\n1. Relevant Acts and Sections\n2. Key legal definitions and principles\n3. Penalties / remedies available\n4. Recent landmark judgements on this topic\n5. Practical steps / what to do`);
+}
+
+function quickSearch(q) {
+  closePanel('search');
+  sendMessageWithText(q);
 }
 
 // ==================== LAW UPDATES ====================
 async function loadUpdates() {
   document.getElementById('updatesLoading').style.display = 'block';
   document.getElementById('updatesList').style.display = 'none';
-
-  // Simulate fetching updates (in production, connect to legal news API)
-  await new Promise(r => setTimeout(r, 1500));
-
+  await new Promise(r => setTimeout(r, 500));
   const updates = [
-    { date:'March 2024', title:'BNS & BNSS Replace IPC & CrPC', summary:'Bharatiya Nyaya Sanhita (BNS) replaced the Indian Penal Code, and Bharatiya Nagarik Suraksha Sanhita (BNSS) replaced the Code of Criminal Procedure effective July 1, 2024.', badge:'badge-amendment', badgeText:'Amendment' },
-    { date:'February 2024', title:'Supreme Court on Bail in PMLA Cases', summary:'SC held that PMLA bail conditions must be interpreted strictly. Twin conditions under Sec 45 PMLA apply to all offences under the Act.', badge:'badge-judgement', badgeText:'Judgement' },
-    { date:'January 2024', title:'Digital Personal Data Protection Act 2023', summary:'DPDP Act came into force. Obligations on data fiduciaries for consent, breach notification, and data localisation for sensitive data.', badge:'badge-new', badgeText:'New Law' },
-    { date:'December 2023', title:'SC: Right to Privacy in Divorce Proceedings', summary:'High Courts cannot direct disclosure of private communications without strong justification. Privacy prevails over fishing expeditions.', badge:'badge-judgement', badgeText:'Judgement' },
-    { date:'November 2023', title:'SEBI Circular on Insider Trading', summary:'SEBI tightened insider trading regulations, expanding the definition of "connected persons" and mandatory disclosures for family members.', badge:'badge-amendment', badgeText:'Amendment' },
+    { date:'July 2024', title:'BNS & BNSS Replace IPC & CrPC', summary:'Bharatiya Nyaya Sanhita (BNS) replaced IPC, BNSS replaced CrPC, and Bharatiya Sakshya Adhiniyam (BSA) replaced Evidence Act — effective July 1, 2024.', badge:'badge-amendment', badgeText:'Major Amendment' },
+    { date:'March 2025', title:'Supreme Court: Bail Cannot Be Denied Mechanically', summary:'Larger bench reinforced that courts must consider personal liberty under Article 21. Mere severity of offence not sufficient to deny bail without considering statutory conditions.', badge:'badge-judgement', badgeText:'SC Judgement' },
+    { date:'Feb 2025', title:'SEBI: New Insider Trading Circular', summary:'SEBI expanded definition of "connected persons" for insider trading. Family members now required to make mandatory disclosures for holdings in listed companies.', badge:'badge-amendment', badgeText:'SEBI Circular' },
+    { date:'Jan 2025', title:'DPDP Act 2023 — Rules Published', summary:'Digital Personal Data Protection Rules notified. Consent managers, data fiduciaries, and grievance mechanisms now have defined timelines and obligations.', badge:'badge-new', badgeText:'New Rules' },
+    { date:'Nov 2024', title:'Supreme Court: NRI Divorce Jurisdiction', summary:'SC held that Indian courts retain jurisdiction to grant divorce even if one party is abroad, provided the marriage was solemnised in India.', badge:'badge-judgement', badgeText:'SC Judgement' },
+    { date:'Oct 2024', title:'IBC Amendment: Pre-Packaged Insolvency Extended', summary:'Pre-packaged insolvency resolution for MSMEs extended and procedural timelines clarified. NCLT now required to admit applications within 14 days.', badge:'badge-amendment', badgeText:'IBC Amendment' },
   ];
-
   document.getElementById('updatesLoading').style.display = 'none';
   document.getElementById('updatesList').style.display = 'block';
   document.getElementById('updatesList').innerHTML = updates.map(u => `
@@ -941,8 +1304,7 @@ async function loadUpdates() {
 
 function askAboutUpdate(title) {
   closePanel('updates');
-  document.getElementById('chatInput').value = `Tell me more about: ${title}. What are the practical implications and what should I be aware of?`;
-  sendMessage();
+  sendMessageWithText(`Explain in detail: "${title}" — what changed, what are the practical implications, and what should lawyers and clients know?`);
 }
 
 // ==================== COURTS ====================
@@ -959,14 +1321,13 @@ function renderCourts() {
 
 function askAboutCourt(name) {
   closePanel('courts');
-  document.getElementById('chatInput').value = `Tell me about filing a case in ${name}: procedure, fees, timelines, and tips.`;
-  sendMessage();
+  sendMessageWithText(`Tell me everything about filing in ${name}: step-by-step procedure, filing fees, required documents, timelines, and practical tips.`);
 }
 
 // ==================== DRAFTS ====================
 function renderDrafts() {
-  document.getElementById('draftList').innerHTML = DRAFT_TEMPLATES.map(t => `
-    <div class="draft-template" onclick="startDraft('${escHtml(t.prompt)}')">
+  document.getElementById('draftList').innerHTML = DRAFT_TEMPLATES.map((t, i) => `
+    <div class="draft-template" onclick="startDraft(${i})">
       <div class="draft-icon">${t.icon}</div>
       <div class="draft-info">
         <h4>${t.name}</h4>
@@ -976,16 +1337,460 @@ function renderDrafts() {
   `).join('');
 }
 
-function startDraft(prompt) {
-  closePanel('draft');
-  document.getElementById('chatInput').value = prompt;
-  sendMessage();
+// ==================== CASE TRACKER ====================
+function addCase() {
+  const name = document.getElementById('ct_name').value.trim();
+  if (!name) return;
+  const c = {
+    id: 'case_' + Date.now(),
+    name,
+    cnr: document.getElementById('ct_cnr').value.trim(),
+    nextDate: document.getElementById('ct_date').value,
+    stage: document.getElementById('ct_stage').value,
+    priority: document.getElementById('ct_color').value,
+    addedAt: Date.now()
+  };
+  state.cases.push(c);
+  localStorage.setItem('lexai_cases', JSON.stringify(state.cases));
+  document.getElementById('ct_name').value = '';
+  document.getElementById('ct_cnr').value = '';
+  document.getElementById('ct_date').value = '';
+  renderCaseTracker();
 }
 
-// ==================== TABS ====================
-function switchTab(el, name) {
-  el.closest('.tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
+function deleteCase(id) {
+  state.cases = state.cases.filter(c => c.id !== id);
+  localStorage.setItem('lexai_cases', JSON.stringify(state.cases));
+  renderCaseTracker();
+}
+
+function renderCaseTracker() {
+  const list = document.getElementById('caseList');
+  if (!list) return;
+  if (!state.cases.length) {
+    list.innerHTML = '<div class="empty-state"><div class="icon">📁</div><p>No cases tracked yet.<br>Add your first matter above.</p></div>';
+    return;
+  }
+  list.innerHTML = state.cases.map(c => `
+    <div class="case-item-card">
+      <div class="case-item-header">
+        <div class="case-item-name">${escHtml(c.name)}</div>
+        <button class="case-item-delete" onclick="deleteCase('${c.id}')">✕</button>
+      </div>
+      ${c.cnr ? `<div style="font-size:11px;color:var(--muted);margin-bottom:4px">CNR: ${escHtml(c.cnr)} <span onclick="searchCNRDirect('${escHtml(c.cnr)}')" style="color:var(--navy);cursor:pointer;text-decoration:underline">Check Status</span></div>` : ''}
+      <div class="case-badges">
+        ${c.stage ? `<span class="case-badge">${c.stage.replace(/_/g,' ')}</span>` : ''}
+        ${c.priority ? `<span class="case-badge ${c.priority}">${c.priority === 'green' ? '🟢 Normal' : c.priority === 'orange' ? '🟡 Urgent' : '🔴 Critical'}</span>` : ''}
+      </div>
+      ${c.nextDate ? `<div class="case-next-date">Next date: <span>${c.nextDate}</span></div>` : ''}
+    </div>
+  `).join('');
+}
+
+function searchCNRDirect(cnr) {
+  closePanel('tracker');
+  openPanel('ecourts');
+  document.getElementById('cnrInput').value = cnr;
+  lookupCNR();
+}
+
+// ==================== ECOURTS ====================
+function lookupCNR() {
+  const cnr = document.getElementById('cnrInput').value.trim();
+  if (!cnr) return;
+  closePanel('ecourts');
+  sendMessageWithText(`Look up case status for CNR number: ${cnr}\n\nSearch the eCourts portal (ecourts.gov.in) and sci.gov.in for this case. Tell me: parties involved, current stage, last order, next hearing date, and court details.`);
+}
+
+function searchParty() {
+  const party = document.getElementById('partyInput').value.trim();
+  if (!party) return;
+  closePanel('ecourts');
+  sendMessageWithText(`Search for cases involving: "${party}"\n\n1. Search eCourts portal and official court websites\n2. List ALL cases found with this party name — numbered list with court, year, case number, subject matter\n3. Ask which specific case I need information about`);
+}
+
+// ==================== CALCULATORS ====================
+function switchCalc(btn, id) {
+  btn.closest('.panel-body').querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  btn.closest('.panel-body').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('calc-' + id).classList.add('active');
+}
+
+function showCalcResult(id, html) {
+  const el = document.getElementById('res-' + id);
+  el.style.display = 'block';
+  el.innerHTML = html;
+}
+
+function calcMaintenance() {
+  const husb = parseFloat(document.getElementById('m_husb').value) || 0;
+  const wife = parseFloat(document.getElementById('m_wife').value) || 0;
+  const kids = parseInt(document.getElementById('m_kids').value) || 0;
+  const city = document.getElementById('m_city').value;
+  if (!husb) { alert('Please enter husband\'s income'); return; }
+
+  const net = husb - wife;
+  const factor = city === 'metro' ? 0.30 : city === 'tier2' ? 0.25 : 0.20;
+  const kidFactor = kids * 0.08;
+  const low = Math.round(net * (factor));
+  const high = Math.round(net * (factor + kidFactor + 0.05));
+
+  showCalcResult('maintenance', `
+    <h4>Estimated Maintenance (Section 144 BNSS)</h4>
+    <div class="result-val">₹${low.toLocaleString('en-IN')} – ₹${high.toLocaleString('en-IN')} / month</div>
+    <p>Based on: Net income difference ₹${net.toLocaleString('en-IN')}, ${kids} child(ren), ${city} standard of living.</p>
+    <p style="margin-top:6px">⚠️ Courts have wide discretion. This is an estimate only. Actual amount depends on lifestyle, expenses, and judicial discretion. Key case: <em>Rajnesh v. Neha (2020) 14 SCC 270</em></p>
+    <button onclick="sendMessageWithText('Explain how maintenance is calculated under Section 144 BNSS. My situation: husband earns ₹${husb}, wife earns ₹${wife}, ${kids} children, living in ${city} city. What range should I expect and what factors does the court consider?')" style="margin-top:10px;background:var(--navy);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif">Ask AI for detailed analysis →</button>
+  `);
+}
+
+function calcGratuity() {
+  const salary = parseFloat(document.getElementById('g_salary').value) || 0;
+  const years = parseInt(document.getElementById('g_years').value) || 0;
+  const months = parseInt(document.getElementById('g_months').value) || 0;
+  if (!salary || years < 5) {
+    showCalcResult('gratuity', '<h4>Not eligible</h4><p>Gratuity under Payment of Gratuity Act 1972 requires minimum <strong>5 years of continuous service</strong>.</p>'); return;
+  }
+  const totalYears = months >= 6 ? years + 1 : years; // round up if >6 months
+  const gratuity = (salary * 15 * totalYears) / 26;
+  const maxGratuity = 2000000; // ₹20 lakhs cap
+  const actual = Math.min(gratuity, maxGratuity);
+  showCalcResult('gratuity', `
+    <h4>Gratuity Amount</h4>
+    <div class="result-val">₹${Math.round(actual).toLocaleString('en-IN')}</div>
+    <p>Formula: (Last Basic Salary × 15 × Years) ÷ 26</p>
+    <p>= (₹${salary.toLocaleString('en-IN')} × 15 × ${totalYears}) ÷ 26</p>
+    ${gratuity > maxGratuity ? '<p style="color:var(--red)">⚠️ Capped at ₹20 lakhs (statutory maximum)</p>' : ''}
+    <p style="margin-top:6px">Payable within 30 days of leaving. Tax exempt up to ₹20 lakhs for non-government employees.</p>
+  `);
+}
+
+function calcStampDuty() {
+  const value = parseFloat(document.getElementById('sd_value').value) || 0;
+  if (!value) { alert('Please enter property value'); return; }
+  const state_sel = document.getElementById('sd_state').value;
+  const gender = document.getElementById('sd_gender').value;
+  const rates = {
+    delhi: { male: 6, female: 4, joint: 5 },
+    maharashtra: { male: 5, female: 5, joint: 5 }, // + local body
+    karnataka: { male: 5.6, female: 5.6, joint: 5.6 },
+    up: { male: 7, female: 6, joint: 6.5 },
+    rajasthan: { male: 6, female: 5, joint: 5.5 },
+    haryana: { male: 7, female: 5, joint: 6 },
+    gujarat: { male: 4.9, female: 4.9, joint: 4.9 },
+    tn: { male: 7, female: 7, joint: 7 },
+  };
+  const reg = { delhi: 1, maharashtra: 1, karnataka: 1, up: 1, rajasthan: 1, haryana: 1, gujarat: 1, tn: 4 };
+  const r = rates[state_sel] || { male: 6, female: 5, joint: 5.5 };
+  const sd_rate = r[gender] || r.male;
+  const reg_rate = reg[state_sel] || 1;
+  const sd = Math.round(value * sd_rate / 100);
+  const reg_fee = Math.round(value * reg_rate / 100);
+  const total = sd + reg_fee;
+
+  showCalcResult('stampduly', `
+    <h4>Stamp Duty Estimate (${state_sel.toUpperCase()})</h4>
+    <div class="result-val">₹${total.toLocaleString('en-IN')}</div>
+    <p>Stamp Duty (${sd_rate}%): ₹${sd.toLocaleString('en-IN')}</p>
+    <p>Registration Charges (${reg_rate}%): ₹${reg_fee.toLocaleString('en-IN')}</p>
+    <p style="margin-top:6px">⚠️ These are indicative rates. Actual rates may vary by property type, location, and current government notifications. Always verify with sub-registrar office.</p>
+  `);
+}
+
+function calcCapitalGains() {
+  const sale = parseFloat(document.getElementById('cg_sale').value) || 0;
+  const cost = parseFloat(document.getElementById('cg_cost').value) || 0;
+  const year = parseInt(document.getElementById('cg_year').value) || 2015;
+  const saleYear = parseInt(document.getElementById('cg_saleyear').value) || 2024;
+  const reinvest = parseFloat(document.getElementById('cg_reinvest').value) || 0;
+  if (!sale || !cost) { alert('Please enter sale and purchase amounts'); return; }
+
+  // CII index (simplified)
+  const CII = { 2001:100,2002:105,2003:109,2004:113,2005:117,2006:122,2007:129,2008:137,2009:148,2010:167,2011:184,2012:200,2013:220,2014:240,2015:254,2016:264,2017:272,2018:280,2019:289,2020:301,2021:317,2022:331,2023:348,2024:363,2025:374 };
+  const cii_buy = CII[year] || 254;
+  const cii_sale = CII[saleYear] || 363;
+  const indexedCost = Math.round(cost * cii_sale / cii_buy);
+  const ltcg = Math.max(0, sale - indexedCost);
+  const exempt = Math.min(ltcg, reinvest);
+  const taxable = ltcg - exempt;
+  const tax = Math.round(taxable * 0.125); // 12.5% post-Budget 2024 (without indexation), approx
+
+  showCalcResult('capitalgains', `
+    <h4>Capital Gains Analysis (LTCG)</h4>
+    <div class="result-val">₹${taxable.toLocaleString('en-IN')} taxable LTCG</div>
+    <p>Sale consideration: ₹${sale.toLocaleString('en-IN')}</p>
+    <p>Indexed purchase cost (CII ${cii_buy}→${cii_sale}): ₹${indexedCost.toLocaleString('en-IN')}</p>
+    <p>LTCG before exemption: ₹${ltcg.toLocaleString('en-IN')}</p>
+    ${reinvest > 0 ? `<p>Section 54 exemption (reinvestment): ₹${exempt.toLocaleString('en-IN')}</p>` : ''}
+    <p><strong>Approximate tax @ 12.5%: ₹${tax.toLocaleString('en-IN')}</strong></p>
+    <p style="margin-top:6px">⚠️ Budget 2024 changed LTCG to 12.5% without indexation (or 20% with indexation — taxpayer's choice for old assets). Consult a CA for exact computation.</p>
+    <button onclick="sendMessageWithText('Explain LTCG tax on property: I bought for ₹${cost} in ${year}, selling for ₹${sale} in ${saleYear}. Am I eligible for Section 54 exemption if I reinvest ₹${reinvest}? What is my exact tax liability?')" style="margin-top:10px;background:var(--navy);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif">Ask AI for detailed tax advice →</button>
+  `);
+}
+
+function calcLimitation() {
+  const type = document.getElementById('lim_type').value;
+  const dateStr = document.getElementById('lim_date').value;
+  if (!dateStr) { alert('Please select cause of action date'); return; }
+  const startDate = new Date(dateStr);
+
+  const periods = {
+    money_recovery: { years: 3, article: 'Article 18, Limitation Act 1963', note: 'From date of default / last payment / acknowledgement' },
+    cheque_bounce: { months: 1, article: 'Section 142 NI Act', note: 'Within 30 days of receiving dishonour notice. Note: complaint must be filed in 30 days after expiry of 15-day notice' },
+    property: { years: 12, article: 'Article 65, Limitation Act 1963', note: 'For recovery of immovable property / possession' },
+    contract: { years: 3, article: 'Article 55, Limitation Act 1963', note: 'From date of breach of contract' },
+    tort: { years: 3, article: 'Article 72-75, Limitation Act 1963', note: 'From date of wrong / knowledge of wrong' },
+    service: { years: 2, article: 'Consumer Protection Act 2019', note: 'From date of cause of action (deficiency in service)' },
+    employment: { years: 3, article: 'Varies by nature of dispute', note: 'Labour court: 3 years; civil suit: 3 years; some special acts have different periods' },
+    appeal_hc: { days: 90, article: 'Varies by High Court rules + Section 100 CPC', note: 'Generally 90 days from impugned order. Condonation possible under Section 5 Limitation Act' },
+    slp: { days: 90, article: 'Order XVI SC Rules / Article 136 Constitution', note: 'SLP must be filed within 90 days of HC judgment (or 60 days if leave granted by HC)' },
+  };
+
+  const p = periods[type];
+  if (!p) return;
+
+  const deadline = new Date(startDate);
+  if (p.years) deadline.setFullYear(deadline.getFullYear() + p.years);
+  else if (p.months) deadline.setMonth(deadline.getMonth() + p.months);
+  else if (p.days) deadline.setDate(deadline.getDate() + p.days);
+
+  const today = new Date();
+  const remaining = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+  const isExpired = remaining < 0;
+  const urgentClass = remaining < 30 && !isExpired ? 'color:var(--red);font-weight:700' : '';
+
+  showCalcResult('limitation', `
+    <h4>Limitation Deadline</h4>
+    <div class="result-val" style="${isExpired ? 'color:var(--red)' : urgentClass}">${isExpired ? '❌ EXPIRED' : deadline.toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'})}</div>
+    <p>Authority: ${p.article}</p>
+    <p>${p.note}</p>
+    ${!isExpired ? `<p style="margin-top:6px;${urgentClass}"><strong>${remaining} days remaining</strong>${remaining < 30 ? ' — URGENT!' : ''}</p>` : ''}
+    ${isExpired ? '<p style="color:var(--red);margin-top:6px">⚠️ Limitation may have expired. However, courts can condone delay under Section 5 of Limitation Act for "sufficient cause". Consult a lawyer immediately.</p>' : ''}
+  `);
+}
+
+function calcCourtFee() {
+  const amount = parseFloat(document.getElementById('cf_amount').value) || 0;
+  const court = document.getElementById('cf_court').value;
+  const state_sel = document.getElementById('cf_state').value;
+  if (!amount) { alert('Please enter claim amount'); return; }
+
+  let fee = 0;
+  let note = '';
+
+  if (court === 'consumer_district') {
+    if (amount <= 500000) fee = 0;
+    else if (amount <= 2000000) fee = Math.min(200, amount * 0.002);
+    else fee = 400;
+    note = 'Consumer District Forum: Free up to ₹5L, max ₹400 for ₹20L+';
+  } else if (court === 'consumer_state') {
+    fee = amount <= 10000000 ? 2000 : 4000;
+    note = 'Consumer State Commission: ₹2,000 up to ₹1Cr, ₹4,000 above';
+  } else if (court === 'consumer_national') {
+    fee = 5000;
+    note = 'Consumer National Commission: ₹5,000 flat fee';
+  } else if (court === 'district') {
+    // Standard ad valorem
+    if (amount <= 10000) fee = Math.round(amount * 0.04);
+    else if (amount <= 50000) fee = 400 + Math.round((amount - 10000) * 0.03);
+    else if (amount <= 200000) fee = 1600 + Math.round((amount - 50000) * 0.025);
+    else fee = 5350 + Math.round((amount - 200000) * 0.02);
+    fee = Math.min(fee, 75000);
+    note = `District Court ad valorem fee (approx). Actual fee varies by state (${state_sel}).`;
+  } else { // high court
+    fee = Math.min(Math.round(amount * 0.025), 150000);
+    note = `High Court fee (approx). Exact fee depends on state rules and relief claimed.`;
+  }
+
+  showCalcResult('courtfee', `
+    <h4>Estimated Court Fee</h4>
+    <div class="result-val">₹${Math.round(fee).toLocaleString('en-IN')}</div>
+    <p>For claim amount: ₹${amount.toLocaleString('en-IN')}</p>
+    <p>${note}</p>
+    <p style="margin-top:6px">⚠️ Verify with the court registry before filing. Some states have different Court Fees Acts.</p>
+  `);
+}
+
+// ==================== COMPLIANCE CALENDAR ====================
+const COMPLIANCE_DATA = [
+  { month:'March', deadlines:[
+    { date:'Mar 15', text:'Advance Tax — 4th installment (100% of tax liability)', tag:'Tax', type:'tax' },
+    { date:'Mar 31', text:'Last date to file updated ITR (ITR-U) for AY 2021-22', tag:'Tax', type:'tax' },
+    { date:'Mar 31', text:'File GST annual return (GSTR-9) for FY 2023-24', tag:'GST', type:'gst' },
+  ]},
+  { month:'April', deadlines:[
+    { date:'Apr 7', text:'TDS payment for March deductions', tag:'Tax', type:'tax' },
+    { date:'Apr 11', text:'GSTR-1 for March (monthly filers)', tag:'GST', type:'gst' },
+    { date:'Apr 20', text:'GSTR-3B for March', tag:'GST', type:'gst' },
+    { date:'Apr 30', text:'Companies: Form AOC-4 filing for audited accounts', tag:'ROC', type:'roc' },
+  ]},
+  { month:'May', deadlines:[
+    { date:'May 15', text:'TDS Certificate (Form 16A) for Q4', tag:'Tax', type:'tax' },
+    { date:'May 30', text:'TDS Return (Form 24Q) for Q4 — salary deductions', tag:'Tax', type:'tax' },
+    { date:'May 31', text:'ROC: Annual Return (MGT-7) for listed companies', tag:'ROC', type:'roc' },
+  ]},
+  { month:'June', deadlines:[
+    { date:'Jun 15', text:'Advance Tax — 1st installment (15% of tax liability)', tag:'Tax', type:'tax' },
+    { date:'Jun 30', text:'Section 80C investments (ELSS/PPF) for FY 2025-26 planning', tag:'Tax', type:'tax' },
+    { date:'Jun 30', text:'HC vacation ends — courts reopen', tag:'Court', type:'court' },
+  ]},
+  { month:'July', deadlines:[
+    { date:'Jul 7', text:'TDS payment for June deductions', tag:'Tax', type:'tax' },
+    { date:'Jul 15', text:'Form 15CA/CB for foreign remittances', tag:'Tax', type:'tax' },
+    { date:'Jul 31', text:'ITR Filing deadline for individuals / salaried (non-audit)', tag:'Tax', type:'tax' },
+    { date:'Jul 31', text:'ROC: Annual Return (MGT-7) for non-listed companies', tag:'ROC', type:'roc' },
+  ]},
+  { month:'September', deadlines:[
+    { date:'Sep 15', text:'Advance Tax — 2nd installment (45% cumulative)', tag:'Tax', type:'tax' },
+    { date:'Sep 30', text:'ITR Filing for companies and audit cases', tag:'Tax', type:'tax' },
+    { date:'Sep 30', text:'Transfer Pricing Report (Form 3CEB) filing', tag:'Tax', type:'tax' },
+    { date:'Sep 30', text:'SC and HC summer vacation ends, courts reopen', tag:'Court', type:'court' },
+  ]},
+];
+
+function loadComplianceCalendar(filter) {
+  state.complianceFilter = filter;
+  const el = document.getElementById('complianceList');
+  if (!el) return;
+  let html = '';
+  COMPLIANCE_DATA.forEach(month => {
+    const items = filter === 'all' ? month.deadlines : month.deadlines.filter(d => d.type === filter);
+    if (!items.length) return;
+    html += `<div class="compliance-month"><h4>${month.month} 2026</h4>`;
+    items.forEach(d => {
+      html += `<div class="compliance-deadline">
+        <div class="deadline-date">${d.date}</div>
+        <div class="deadline-text">${d.text}</div>
+        <div class="deadline-tag">${d.tag}</div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html || '<div class="empty-state"><p>No deadlines found for this filter.</p></div>';
+}
+
+function switchCompliance(btn, filter) {
+  btn.closest('.panel-body').querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  loadComplianceCalendar(filter);
+}
+
+// ==================== RTI GENERATOR ====================
+function generateRTI() {
+  const name = document.getElementById('rti_name').value.trim();
+  const addr = document.getElementById('rti_addr').value.trim();
+  const auth = document.getElementById('rti_auth').value.trim();
+  const info = document.getElementById('rti_info').value.trim();
+  const from = document.getElementById('rti_from').value;
+  const to = document.getElementById('rti_to').value;
+
+  if (!name || !auth || !info) { alert('Please fill in your name, authority, and information requested.'); return; }
+
+  const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  const period = from && to ? `\n\nPeriod of information required: From ${from} to ${to}` : '';
+
+  const rti = `APPLICATION UNDER THE RIGHT TO INFORMATION ACT, 2005
+
+Date: ${today}
+
+To,
+The Public Information Officer,
+${auth}
+
+Subject: Application for information under the Right to Information Act, 2005
+
+Sir/Madam,
+
+I, ${name}, resident of ${addr || '[your address]'}, hereby request the following information under Section 6(1) of the Right to Information Act, 2005:
+
+INFORMATION REQUESTED:
+${info}${period}
+
+I request that the information be provided in certified copy form.
+
+I am depositing ₹10/- as the prescribed fee via [IPO / Demand Draft / Online payment].
+
+I declare that I am a citizen of India and the information sought is not covered under Section 8 or Section 9 of the RTI Act, 2005.
+
+If the information is not held by your office or is held by another public authority, please transfer this application under Section 6(3) of the RTI Act.
+
+Yours sincerely,
+
+${name}
+${addr || '[Address]'}
+[Phone / Email]`;
+
+  document.getElementById('rtiOutput').style.display = 'block';
+  document.getElementById('rtiOutput').textContent = rti;
+  document.getElementById('rtiSendBtn').style.display = 'block';
+}
+
+function sendRTIToChat() {
+  const rti = document.getElementById('rtiOutput').textContent;
+  closePanel('rti');
+  sendMessageWithText(`Please review and improve this RTI application I've drafted. Check if it's legally sound, properly formatted, and maximises my chances of getting the information. Also advise on what to do if the PIO rejects or delays:\n\n${rti}`);
+}
+
+// ==================== DUE DILIGENCE CHECKLISTS ====================
+const CHECKLISTS = {
+  property: {
+    sections: [
+      { title: 'Title & Ownership Documents', items: ['Original title deed (Sale Deed)', '7/12 extract (mutation records) or Jamabandi', 'Encumbrance Certificate (EC) — last 30 years', 'Khasra / Khata extract', 'Property tax receipts (last 3 years)', 'Link documents showing chain of title', 'Conversion certificate (agricultural to residential)', 'Power of Attorney if seller is NRI / authorised person'] },
+      { title: 'RERA & Builder Documents', items: ['RERA registration certificate + RERA number', 'Sanctioned building plan from municipal authority', 'Commencement Certificate', 'Completion Certificate / Occupancy Certificate', 'NOC from local body', 'Parking allocation documents'] },
+      { title: 'Charges & Dues', items: ['Society maintenance dues clearance certificate', 'Property tax — no dues certificate', 'Electricity/water connection dues clearance', 'Home loan/bank NOC (if existing loan)', 'No objection from competent authority (if applicable)'] },
+    ]
+  },
+  startup: {
+    sections: [
+      { title: 'Corporate Documents', items: ['Certificate of Incorporation', 'Memorandum & Articles of Association', 'Board resolutions — all major decisions', 'Cap table (fully diluted)', 'Shareholder agreements — all versions', 'ESOP plan and grant letters'] },
+      { title: 'IP & Technology', items: ['Trademark registrations / applications', 'Patent filings', 'Assignment of IP from founders to company', 'Third-party software licenses', 'Open source license compliance', 'Data privacy policy and DPDP Act compliance'] },
+      { title: 'Employment & Regulatory', items: ['Employment agreements — all key employees', 'Non-compete and confidentiality agreements', 'PF/ESI registration and compliance', 'Professional Tax registration', 'GST registration and returns', 'ROC filings — annual returns, financial statements'] },
+      { title: 'Litigation & Risks', items: ['All pending litigation — courts, labour, consumer', 'Regulatory notices / show cause notices', 'Tax demands / outstanding assessments', 'Customer / vendor disputes', 'Director disqualification checks'] },
+    ]
+  },
+  employment: {
+    sections: [
+      { title: 'Pre-Joining Due Diligence', items: ['Employment agreement — carefully read', 'Non-compete clause — is it enforceable?', 'IP assignment clause — what you create belongs to employer', 'Notice period and exit conditions', 'Confidentiality obligations — post-employment', 'ESOP/stock option terms and vesting schedule'] },
+      { title: 'Company Checks', items: ['Company registration status (MCA portal)', 'GST / PAN registration', 'Check LinkedIn for employee reviews', 'Labour law compliance (PF, ESI)', 'POSH policy — is an ICC constituted?', 'Past salary delay / dispute history'] },
+    ]
+  },
+  divorce: {
+    sections: [
+      { title: 'Marriage Documents', items: ['Marriage certificate', 'Wedding photographs / videos', 'Invitation cards', 'Hospital records of children (joint parenting)', 'NRI marriage registration (if applicable)'] },
+      { title: 'Financial Documents', items: ['Joint bank account statements (5 years)', 'Property documents — joint / individual', 'Tax returns (ITR) of both parties', 'Investment statements — FDs, stocks, mutual funds', 'Insurance policies', 'Loan/liability documents'] },
+      { title: 'For Maintenance / Alimony', items: ['Pay slips / income proof of both parties', 'Business income proof (P&L if self-employed)', 'Monthly expense estimates', 'Child school fee receipts', 'Medical expense records'] },
+    ]
+  },
+  rera: {
+    sections: [
+      { title: 'Documents for RERA Complaint', items: ['Builder-buyer agreement (BBA) / allotment letter', 'Payment receipts — all installments', 'Bank statements showing payments', 'RERA registration certificate of project', 'All communication with builder (emails, WhatsApp, letters)', 'Builder\'s brochure / advertisement', 'Any possession letter / offer letter', 'Flat / plot details from agreement'] },
+      { title: 'Complaint Information', items: ['RERA complaint form (state-specific)', 'Relief calculation (Section 18 interest @ SBI PLR + 2%)', 'Copy of complaint to builder (demand notice)', 'ID proof of complainant', 'Online submission at state RERA portal'] },
+    ]
+  }
+};
+
+function loadChecklist(type) {
+  state.checklistFilter = type;
+  const el = document.getElementById('checklistContent');
+  if (!el) return;
+  const data = CHECKLISTS[type];
+  if (!data) return;
+  let html = '';
+  data.sections.forEach(s => {
+    html += `<div class="checklist-section"><h4>${s.title}</h4>`;
+    s.items.forEach((item, i) => {
+      html += `<div class="checklist-item"><input type="checkbox" id="cl_${type}_${i}"><label for="cl_${type}_${i}">${item}</label></div>`;
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function switchChecklist(btn, type) {
+  btn.closest('.panel-body').querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  loadChecklist(type);
 }
 
 // ==================== UTILS ====================
