@@ -792,9 +792,9 @@ async function sendMessage(text) {
 
   try {
     const apiMessages = state.messages.slice(-20).map(m => ({ role: m.role, content: m.content }));
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('https://mhyhozvoxggthypdybse.supabase.co/functions/v1/chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1oeWhvenZveGdndGh5cGR5YnNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwMjc5MzMsImV4cCI6MjA4ODYwMzkzM30.z7EiqmmbPlz7D4IdfCwPxuM6zQpPYvJgnuSZVb5AWe0' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1500,
