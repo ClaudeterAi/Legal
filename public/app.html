@@ -339,6 +339,26 @@
     background:rgba(15,31,61,.05); border-left:3px solid var(--navy);
     padding:8px 12px; border-radius:0 6px 6px 0; margin:10px 0; font-size:13px;
   }
+
+  /* Intake form */
+  .intake-options { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px; }
+  .intake-option {
+    padding:7px 14px; border:1.5px solid var(--border); border-radius:20px;
+    background:#fff; font-family:'DM Sans',sans-serif; font-size:13px;
+    cursor:pointer; transition:all .15s; color:var(--text);
+  }
+  .intake-option:hover { border-color:var(--navy); color:var(--navy); background:rgba(15,31,61,.04); }
+  .intake-input-row { display:flex; gap:8px; margin-top:4px; }
+  .intake-input {
+    flex:1; padding:9px 12px; border:1.5px solid var(--border); border-radius:8px;
+    font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color .2s;
+  }
+  .intake-input:focus { border-color:var(--navy); }
+  .intake-submit {
+    padding:9px 16px; background:var(--navy); color:#fff; border:none; border-radius:8px;
+    font-size:15px; cursor:pointer; transition:all .15s;
+  }
+  .intake-submit:hover { background:var(--navy2); }
 </style>
 </head>
 <body>
@@ -610,14 +630,102 @@ const COURTS_DATA = {
 };
 
 const DRAFT_TEMPLATES = [
-  { icon:'📋', name:'Rental Agreement', desc:'Residential / Commercial lease deed', prompt:'Draft a comprehensive rental agreement for a residential property in India with all standard clauses.' },
-  { icon:'⚖️', name:'Legal Notice', desc:'Demand notice, cheque bounce, property dispute', prompt:'Draft a legal notice for cheque dishonour under Section 138 NI Act.' },
-  { icon:'💼', name:'Employment Agreement', desc:'Offer letter, employment contract', prompt:'Draft an employment agreement for a senior software engineer with IP assignment clauses.' },
-  { icon:'🤝', name:'MOU / NDA', desc:'Non-disclosure, collaboration agreement', prompt:'Draft a mutual NDA between two companies exploring a business partnership.' },
-  { icon:'🏠', name:'Sale Deed', desc:'Property sale and transfer document', prompt:'Draft a property sale deed for residential flat transfer in India.' },
-  { icon:'📜', name:'Power of Attorney', desc:'General or special POA', prompt:'Draft a General Power of Attorney authorizing a family member to manage property affairs.' },
-  { icon:'🧾', name:'Affidavit', desc:'Sworn statement for court or government', prompt:'Draft a general affidavit template for court submission.' },
-  { icon:'⚡', name:'Bail Application', desc:'Regular bail, anticipatory bail', prompt:'Draft a bail application for a person arrested under IPC Section 420.' },
+  {
+    icon:'📋', name:'Rental Agreement', desc:'Residential / Commercial lease deed',
+    questions:[
+      { key:'type', label:'Type of property?', options:['Residential','Commercial','Industrial'] },
+      { key:'landlord', label:"Landlord's full name?" },
+      { key:'tenant', label:"Tenant's full name?" },
+      { key:'address', label:'Property address?' },
+      { key:'rent', label:'Monthly rent amount (₹)?' },
+      { key:'deposit', label:'Security deposit amount (₹)?' },
+      { key:'duration', label:'Lease duration?', options:['11 months','1 year','2 years','3 years'] },
+      { key:'start', label:'Start date?' },
+    ],
+    prompt: (a) => `Draft a complete ${a.type} Rental Agreement with all standard clauses for Indian law.\nLandlord: ${a.landlord}\nTenant: ${a.tenant}\nProperty: ${a.address}\nRent: ₹${a.rent}/month\nDeposit: ₹${a.deposit}\nDuration: ${a.duration} from ${a.start}\nInclude: maintenance, termination, notice period, lock-in clauses.`
+  },
+  {
+    icon:'⚖️', name:'Legal Notice', desc:'Demand notice, cheque bounce, property dispute',
+    questions:[
+      { key:'type', label:'Type of notice?', options:['Cheque Bounce (Sec 138)','Property Dispute','Recovery of Money','Service Deficiency','Employment Issue','Other'] },
+      { key:'sender', label:"Sender's full name & address?" },
+      { key:'receiver', label:"Recipient's full name & address?" },
+      { key:'facts', label:'Brief facts of the matter?' },
+      { key:'demand', label:'What are you demanding?' },
+      { key:'deadline', label:'Days to comply?', options:['15 days','30 days','60 days'] },
+    ],
+    prompt: (a) => `Draft a formal Legal Notice for ${a.type} under Indian law.\nFrom: ${a.sender}\nTo: ${a.receiver}\nFacts: ${a.facts}\nDemand: ${a.demand}\nDeadline: ${a.deadline} from receipt.\nInclude proper legal language, relevant sections, and consequences of non-compliance.`
+  },
+  {
+    icon:'💼', name:'Employment Agreement', desc:'Offer letter, employment contract',
+    questions:[
+      { key:'company', label:'Company name & address?' },
+      { key:'employee', label:"Employee's full name?" },
+      { key:'role', label:'Job title / designation?' },
+      { key:'salary', label:'Annual CTC (₹)?' },
+      { key:'start', label:'Joining date?' },
+      { key:'location', label:'Work location?' },
+      { key:'notice', label:'Notice period?', options:['30 days','60 days','90 days'] },
+      { key:'extras', label:'Any special clauses? (e.g. NDA, non-compete, ESOP)', placeholder:'Optional' },
+    ],
+    prompt: (a) => `Draft a comprehensive Employment Agreement under Indian labour law.\nCompany: ${a.company}\nEmployee: ${a.employee}\nRole: ${a.role}\nCTC: ₹${a.salary} per annum\nJoining: ${a.start}\nLocation: ${a.location}\nNotice period: ${a.notice}\nSpecial terms: ${a.extras||'Standard'}\nInclude: probation, IP assignment, confidentiality, termination clauses.`
+  },
+  {
+    icon:'🤝', name:'MOU / NDA', desc:'Non-disclosure, collaboration agreement',
+    questions:[
+      { key:'type', label:'Type of agreement?', options:['Mutual NDA','One-way NDA','MOU / Collaboration','Partnership Agreement'] },
+      { key:'party1', label:'Party 1 name & address?' },
+      { key:'party2', label:'Party 2 name & address?' },
+      { key:'purpose', label:'Purpose of the agreement?' },
+      { key:'duration', label:'Duration of confidentiality?', options:['1 year','2 years','3 years','5 years','Indefinite'] },
+    ],
+    prompt: (a) => `Draft a ${a.type} under Indian contract law.\nParty 1: ${a.party1}\nParty 2: ${a.party2}\nPurpose: ${a.purpose}\nConfidentiality period: ${a.duration}\nInclude: definition of confidential info, exclusions, obligations, remedies for breach.`
+  },
+  {
+    icon:'🏠', name:'Sale Deed', desc:'Property sale and transfer document',
+    questions:[
+      { key:'seller', label:"Seller's full name & address?" },
+      { key:'buyer', label:"Buyer's full name & address?" },
+      { key:'property', label:'Property description & address?' },
+      { key:'price', label:'Sale consideration (₹)?' },
+      { key:'payment', label:'Payment mode?', options:['Full payment','Part payment + balance','Loan'] },
+      { key:'state', label:'State of property (for stamp duty)?' },
+    ],
+    prompt: (a) => `Draft a complete Property Sale Deed under Indian Transfer of Property Act.\nSeller: ${a.seller}\nBuyer: ${a.buyer}\nProperty: ${a.property}\nConsideration: ₹${a.price}\nPayment: ${a.payment}\nState: ${a.state}\nInclude: title warranty, encumbrance certificate, possession clause, stamp duty note.`
+  },
+  {
+    icon:'📜', name:'Power of Attorney', desc:'General or special POA',
+    questions:[
+      { key:'type', label:'Type of POA?', options:['General POA','Special/Limited POA','Revocable POA'] },
+      { key:'principal', label:"Principal's full name & address? (person granting POA)" },
+      { key:'agent', label:"Agent's full name & address? (person receiving POA)" },
+      { key:'purpose', label:'Purpose / powers granted?' },
+      { key:'duration', label:'Duration?', options:['Until revoked','1 year','Specific date'] },
+    ],
+    prompt: (a) => `Draft a ${a.type} under Indian law.\nPrincipal: ${a.principal}\nAgent: ${a.agent}\nPowers granted: ${a.purpose}\nDuration: ${a.duration}\nInclude: attestation requirements, stamp duty note, revocation clause.`
+  },
+  {
+    icon:'🧾', name:'Affidavit', desc:'Sworn statement for court or government',
+    questions:[
+      { key:'purpose', label:'Purpose of affidavit?', options:['Court submission','Govt. application','Address proof','Name change','General declaration','Other'] },
+      { key:'deponent', label:"Deponent's full name, age & address?" },
+      { key:'facts', label:'Facts to be stated in the affidavit?' },
+      { key:'court', label:'Before which authority / court?', placeholder:'Optional' },
+    ],
+    prompt: (a) => `Draft a formal Affidavit for ${a.purpose} under Indian law.\nDeponent: ${a.deponent}\nFacts: ${a.facts}\nBefore: ${a.court||'Notary/Magistrate'}\nInclude: proper jurat, verification clause, notary section.`
+  },
+  {
+    icon:'⚡', name:'Bail Application', desc:'Regular bail, anticipatory bail',
+    questions:[
+      { key:'type', label:'Type of bail?', options:['Regular Bail (Sec 437/439 CrPC)','Anticipatory Bail (Sec 438 CrPC)','Interim Bail'] },
+      { key:'accused', label:"Accused's full name?" },
+      { key:'fir', label:'FIR No. / Case details?' },
+      { key:'offence', label:'Offence / sections charged?' },
+      { key:'court', label:'Court where application is to be filed?' },
+      { key:'grounds', label:'Grounds for bail?' },
+    ],
+    prompt: (a) => `Draft a ${a.type} application under Indian criminal law (BNSS/CrPC).\nAccused: ${a.accused}\nFIR/Case: ${a.fir}\nOffence: ${a.offence}\nCourt: ${a.court}\nGrounds: ${a.grounds}\nInclude: relevant Supreme Court precedents on bail, personal liberty arguments, undertakings.`
+  },
 ];
 
 // ==================== INIT ====================
@@ -965,8 +1073,8 @@ function askAboutCourt(name) {
 
 // ==================== DRAFTS ====================
 function renderDrafts() {
-  document.getElementById('draftList').innerHTML = DRAFT_TEMPLATES.map(t => `
-    <div class="draft-template" onclick="startDraft('${escHtml(t.prompt)}')">
+  document.getElementById('draftList').innerHTML = DRAFT_TEMPLATES.map((t,i) => `
+    <div class="draft-template" onclick="openIntake(${i})">
       <div class="draft-icon">${t.icon}</div>
       <div class="draft-info">
         <h4>${t.name}</h4>
@@ -976,10 +1084,97 @@ function renderDrafts() {
   `).join('');
 }
 
-function startDraft(prompt) {
+// ---- INTAKE FORM ----
+let intakeState = { templateIdx: null, answers: {}, step: 0 };
+
+function openIntake(idx) {
   closePanel('draft');
-  document.getElementById('chatInput').value = prompt;
-  sendMessage();
+  intakeState = { templateIdx: idx, answers: {}, step: 0 };
+  const t = DRAFT_TEMPLATES[idx];
+
+  // Hide welcome, show chat
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
+
+  // Show intake card as an AI message
+  renderIntakeStep();
+}
+
+function renderIntakeStep() {
+  const t = DRAFT_TEMPLATES[intakeState.templateIdx];
+  const q = t.questions[intakeState.step];
+  const total = t.questions.length;
+  const step = intakeState.step + 1;
+
+  const container = document.getElementById('messages');
+
+  // Remove previous intake card if exists
+  document.getElementById('intake-card')?.remove();
+
+  const optionsHtml = q.options
+    ? q.options.map(o => `<button class="intake-option" onclick="selectIntakeOption('${escHtml(o)}')">${o}</button>`).join('')
+    : '';
+
+  const inputHtml = !q.options ? `
+    <div class="intake-input-row">
+      <input class="intake-input" id="intakeInput" type="text" placeholder="${q.placeholder||'Type your answer...'}"
+        onkeydown="if(event.key==='Enter') submitIntakeInput()">
+      <button class="intake-submit" onclick="submitIntakeInput()">→</button>
+    </div>` : '';
+
+  const html = `<div class="msg ai" id="intake-card">
+    <div class="msg-avatar">L</div>
+    <div class="msg-content">
+      <div class="msg-bubble" style="min-width:320px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:20px">${t.icon}</span>
+          <strong style="color:var(--navy)">${t.name}</strong>
+          <span style="margin-left:auto;font-size:11px;color:var(--muted);background:var(--cream2);padding:2px 8px;border-radius:10px">${step} / ${total}</span>
+        </div>
+        <div style="font-size:14px;margin-bottom:14px;font-weight:500">${q.label}</div>
+        <div class="intake-options">${optionsHtml}</div>
+        ${inputHtml}
+      </div>
+    </div>
+  </div>`;
+
+  container.insertAdjacentHTML('beforeend', html);
+  container.scrollTop = container.scrollHeight;
+  if (!q.options) setTimeout(() => document.getElementById('intakeInput')?.focus(), 100);
+}
+
+function selectIntakeOption(value) {
+  submitIntakeAnswer(value);
+}
+
+function submitIntakeInput() {
+  const val = document.getElementById('intakeInput')?.value?.trim();
+  if (!val) return;
+  submitIntakeAnswer(val);
+}
+
+function submitIntakeAnswer(value) {
+  const t = DRAFT_TEMPLATES[intakeState.templateIdx];
+  const q = t.questions[intakeState.step];
+  intakeState.answers[q.key] = value;
+
+  // Show user answer
+  document.getElementById('intake-card')?.remove();
+  appendMessageToDOM('user', `${q.label} → ${value}`);
+
+  intakeState.step++;
+
+  if (intakeState.step < t.questions.length) {
+    // Next question
+    setTimeout(renderIntakeStep, 300);
+  } else {
+    // All answered — draft it
+    const prompt = t.prompt(intakeState.answers);
+    setTimeout(() => {
+      appendMessageToDOM('ai', `Perfect! I have everything I need. Drafting your **${t.name}** now...`);
+      setTimeout(() => sendMessage(prompt), 600);
+    }, 300);
+  }
 }
 
 // ==================== TABS ====================
