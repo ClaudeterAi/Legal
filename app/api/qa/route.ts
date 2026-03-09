@@ -1,4 +1,4 @@
-import { anthropic, CLAUDE_MODEL } from '@/lib/anthropic'
+import { getAnthropicClient, CLAUDE_MODEL } from '@/lib/anthropic'
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
@@ -26,6 +26,7 @@ Your role:
 
 Always end with: "⚖️ This is legal information, not legal advice. For your specific situation, consult a licensed attorney."`
 
+    const anthropic = getAnthropicClient()
     const message = await anthropic.messages.create({
       model: CLAUDE_MODEL,
       max_tokens: 1000,
@@ -37,13 +38,11 @@ Always end with: "⚖️ This is legal information, not legal advice. For your s
     })
 
     const text = message.content[0].type === 'text' ? message.content[0].text : ''
-
-    // Increment Q&A usage
     await supabase.rpc('increment_qa', { uid: user.id })
 
     return NextResponse.json({ text })
   } catch (e) {
     console.error('QA error:', e)
-    return NextResponse.json({ error: 'Failed to process question. Please try again.' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to process question.' }, { status: 500 })
   }
 }

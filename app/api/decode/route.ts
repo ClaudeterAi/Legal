@@ -1,4 +1,4 @@
-import { anthropic, CLAUDE_MODEL } from '@/lib/anthropic'
+import { getAnthropicClient, CLAUDE_MODEL } from '@/lib/anthropic'
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
@@ -8,7 +8,7 @@ Analyze the provided legal document and return ONLY a valid JSON object (no mark
   "type": "Document type (e.g. Rental Agreement, NDA, Employment Contract, Court Notice)",
   "jurisdiction": "Detected or stated jurisdiction",
   "summary": "2-3 sentence plain English summary of what this document is and does",
-  "riskScore": 1-5,
+  "riskScore": 1,
   "keyPoints": ["4-6 most important things to know"],
   "redFlags": ["2-4 concerning clauses — empty array if none"],
   "obligations": ["2-4 key obligations or dates"],
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
     const { text, jurisdiction } = await req.json()
     if (!text) return NextResponse.json({ error: 'No document text provided' }, { status: 400 })
 
+    const anthropic = getAnthropicClient()
     const message = await anthropic.messages.create({
       model: CLAUDE_MODEL,
       max_tokens: 1500,
@@ -36,7 +37,6 @@ export async function POST(req: Request) {
     const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
     const result = JSON.parse(cleaned)
 
-    // Save to DB
     await supabase.from('documents').insert({
       user_id: user.id,
       title: result.type || 'Decoded Document',
@@ -47,7 +47,6 @@ export async function POST(req: Request) {
       risk_score: result.riskScore,
     })
 
-    // Increment usage counter
     await supabase.rpc('increment_decodes', { uid: user.id })
 
     return NextResponse.json(result)
